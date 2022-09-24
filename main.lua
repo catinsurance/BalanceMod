@@ -74,7 +74,7 @@ end
 
 -- // Initialization // --
 
-BalanceMod:AddCallback(ModCallbacks.MC_POST_PLAYER_RENDER, ChargeBars.UpdateChargeBarsForPlayer)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_RENDER, ChargeBars.UpdateAllCustomChargeBars)
 
 -- //////////////////// --
 
@@ -177,7 +177,8 @@ function BreathOfLife:OnUpdate()
                     player:SetMinDamageCooldown(BreathOfLife.IFrames)
                     local sprite = Sprite()
                     sprite:Load(ChargeBars.DefaultSprite, true)
-                    BreathOfLife.ChargeBarPlayers[playerIndex] = ChargeBars:MakeCustomChargeBar(player, sprite, BreathOfLife.IFrames, BreathOfLife.IFrames, -1)
+                    local RenderFrames = BreathOfLife.IFrames * 2
+                    BreathOfLife.ChargeBarPlayers[playerIndex] = ChargeBars:MakeCustomChargeBar(player, sprite, RenderFrames, RenderFrames, -1)
                 end
             else -- its either charged or recharging
                 if BreathOfLife.ChargeBarPlayers[playerIndex] ~= nil then

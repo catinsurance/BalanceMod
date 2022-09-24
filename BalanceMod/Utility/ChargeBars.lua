@@ -1,4 +1,6 @@
 local VectorZero = Vector(0, 0)
+local game = Game()
+
 local ChargeBar = {}
 local ChargeBarData = {}
 
@@ -61,7 +63,6 @@ local function GetPlayerIndex(player)
 end
 
 local function GetPlayers()
-    local game = Game()
     local numPlayers = game:GetNumPlayers()
   
     local players = {}
@@ -113,12 +114,10 @@ function ChargeBar:MakeCustomChargeBar(player, sprite, charge, maxCharge, increm
         IncrementValue = incrementValue
     }
 
-    print(ChargeBarData[playerIndex][index].Charge)
-
     return index
 end
 
-function ChargeBar:UpdateCustomBarState(player, barId, state) -- setting state overwrites the charge, but not the max charge
+function ChargeBar:UpdateCustomBarState(player, barId, state)
     local playerIndex = GetPlayerIndex(player)
     local playerData = ChargeBarData[playerIndex]
     
@@ -126,14 +125,21 @@ function ChargeBar:UpdateCustomBarState(player, barId, state) -- setting state o
         return
     end
 
-    local bar = playerData[barId]
-
-    if bar == nil then
+    if playerData[barId] == nil then
         return
     end
 
-    bar.State = Clamp(state, ChargeBarState.Normal, ChargeBarState.Charged)
-    bar.Charge = 0
+    playerData[barId].State = Clamp(state, ChargeBarState.Normal, ChargeBarState.ChargedAnimDone)
+
+    if state == ChargeBarState.Deleting then
+        playerData[barId].Sprite:Play("Disappear", true)
+    elseif state == ChargeBarState.ChargedStart then
+        playerData[barId].Sprite:Play("StartCharged", true)
+    elseif state == ChargeBarState.ChargedAnimDone then
+        playerData[barId].Sprite:Play("Charged", true)
+    elseif state == ChargeBarState.Normal then
+        playerData[barId].Sprite:Play("Charging", true)
+    end
 end
 
 function ChargeBar:GetCustomChargeBarCharge(player, barId)
@@ -170,13 +176,17 @@ function ChargeBar:UpdateCustomChargeBar(player, barId) -- draws and increments 
     -- increment charge depending on what state we are in
     if ChargeBarData[playerIndex][barId].State == ChargeBarState.Normal then
         ChargeBarData[playerIndex][barId].Charge = Clamp(ChargeBarData[playerIndex][barId].Charge + ChargeBarData[playerIndex][barId].IncrementValue, 1, ChargeBarData[playerIndex][barId].MaxCharge)
-    elseif ChargeBarData[playerIndex][barId].State == ChargeBarState.Charged then
-        ChargeBarData[playerIndex][barId].Charge = Clamp( ChargeBarData[playerIndex][barId].Charge, 1, ChargeBarChargedFrameCount)
-    elseif ChargeBarData[playerIndex][barId].State == ChargeBarState.Deleting then
-        ChargeBarData[playerIndex][barId].Charge = Clamp( ChargeBarData[playerIndex][barId].Charge, 1, ChargeBarDeleteFrameCount)
     end
 
     local bar = ChargeBarData[playerIndex][barId]    
+
+    if bar.State == ChargeBarState.Deleting then
+        if bar.Sprite:IsFinished("Disappear") then
+            ChargeBarData[playerIndex][barId] = nil
+            bar = nil
+            return
+        end
+    end
 
     --rendering stuff now
     
@@ -189,36 +199,20 @@ function ChargeBar:UpdateCustomChargeBar(player, barId) -- draws and increments 
     local adjustedPosition = player.Position + overlapOffset + flyingOffset + sizeOffset
 
     -- now actually draw the bar
-    local frameAmountPerCharge = ChargeBarFrameCount / bar.MaxCharge
-    local frame
     
     if bar.State == ChargeBarState.Normal then
-        frame = Clamp(Round(bar.Charge * frameAmountPerCharge), 1, ChargeBarFrameCount)
+        local frameAmountPerCharge = ChargeBarFrameCount / bar.MaxCharge
+        local frame = Clamp(Round(bar.Charge * frameAmountPerCharge), 1, ChargeBarFrameCount)
         bar.Sprite:SetFrame("Charging", frame)
-    elseif bar.State == ChargeBarState.Deleting then
-        frame = Clamp(bar.Charge + 1, 1, ChargeBarDeleteFrameCount)
-        bar.Sprite:SetFrame("Disappear", frame)
-    elseif bar.State == ChargeBarState.ChargedAnimDone then
-        frame = Clamp(bar.Charge + 1, 1, ChargeBarChargedFrameCount)
-        bar.Sprite:SetFrame("Charged", frame)
-    elseif bar.State == ChargeBarState.ChargedStart then
-        frame = Clamp(bar.Charge + 1, 1, ChargeBarStartChargedFrameCount)
-        bar.Sprite:SetFrame("StartCharged", frame)
-    end
-    
-    local finalPosition = Game():GetRoom():WorldToScreenPosition(adjustedPosition)
-    bar.Sprite:Render(finalPosition, VectorZero, VectorZero)
-
-    if bar.State == ChargeBarState.Deleting then
-        if bar.Charge >= ChargeBarDeleteFrameCount then
-            local playerIndex = GetPlayerIndex(player)
-            if ChargeBarData[playerIndex] == nil then
-                ChargeBarData[playerIndex] = {}
-            end
-
-            ChargeBarData[playerIndex][barId] = nil
+    else
+        if game:GetFrameCount() % 2 == 0 then
+            bar.Sprite:Update()
         end
     end
+    
+    local finalPosition = game:GetRoom():WorldToScreenPosition(adjustedPosition)
+    bar.Sprite:Render(finalPosition, VectorZero, VectorZero)
+
 end
 
 function ChargeBar:UpdateAllCustomChargeBars()
@@ -253,7 +247,7 @@ function ChargeBar:UpdateChargeBarsForPlayer(player)
 end
 
 function ChargeBar:DeleteCustomChargeBar(player, index)
-    ChargeBar:UpdateCustomBarState(player, index, ChargeBar.ChargeBarState.Deleting)
+    ChargeBar:UpdateCustomBarState(player, index, ChargeBarState.Deleting)
 end
 
 -- //////////////////// --
