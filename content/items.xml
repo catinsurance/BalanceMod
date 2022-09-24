@@ -1,4 +1,4 @@
 <items gfxroot="gfx/items/" version="1">
-	<active description="#DATAMINER_DESCRIPTION" gfx="Collectibles_481_Dataminer.png" id="481" name="#DATAMINER_NAME" maxcharges="2"/>
+	<active description="#DATAMINER_DESCRIPTION" gfx="Collectibles_481_Dataminer.png" id="481" name="#DATAMINER_NAME" maxcharges="3"/>
     
 </items>

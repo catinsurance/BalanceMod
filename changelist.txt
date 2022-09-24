@@ -4,11 +4,11 @@ v1.0.0 //
 
 - Dataminer no longer rerolls any stats.
 - Dataminer grants +1 damage and +0.5 fire rate for the room on each use.
-    -Fire rate will stop incrementing after 3 uses in one room.
+    - Fire rate will stop incrementing after 3 uses in one room.
 - Dataminer now rotates enemy and pickup sprites by a random amount instead of 90 degrees.
-- Dataminer's charge has been lowered from 4 -> 2
+- Dataminer's charge has been lowered from 4 -> 3.
 
-- Breath of Life's charge has been lowered from 6 -> 5
-- Breath of Life's depletes faster and damages more frequently after invincibility has worn off.
+- Breath of Life's charge has been lowered from 6 -> 5.
+- Breath of Life's charge depletes faster and damages more frequently after invincibility has worn off.
 - Breath of Life's invincibility frames last a bit longer.
 - Breath of Life now has a charge bar to show how much invincibility you have left.
