@@ -482,7 +482,6 @@
 	<familiar achievement="286" description="#KING_BABY_DESCRIPTION" gfx="Collectibles_472_KingBaby.png" id="472" name="#KING_BABY_NAME" />
 	<familiar description="#BIG_CHUBBY_DESCRIPTION" gfx="Collectibles_473_BigChubby.png" id="473" name="#BIG_CHUBBY_NAME" />
 	<active description="#BROKEN_GLASS_CANNON_DESCRIPTION" gfx="Collectibles_474_BrokenGlassCannon.png" id="474" name="#BROKEN_GLASS_CANNON_NAME" maxcharges="4" initcharge="0" />
-	<active achievement="305" description="#PLAN_C_DESCRIPTION" gfx="Collectibles_475_PlanC.png" id="475" name="#PLAN_C_NAME" maxcharges="0" />
 	<active achievement="296" description="#D1_DESCRIPTION" gfx="Collectibles_476_D1.png" id="476" name="#D1_NAME" maxcharges="4" />
 	<active achievement="295" description="#VOID_DESCRIPTION" gfx="Collectibles_477_Void.png" id="477" name="#VOID_NAME" maxcharges="6" />
 	<active description="#PAUSE_DESCRIPTION" gfx="Collectibles_478_Pause.png" id="478" name="#PAUSE_NAME" maxcharges="2" />

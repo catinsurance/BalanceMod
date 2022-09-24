@@ -12,3 +12,6 @@ v1.0.0 //
 - Breath of Life's charge depletes faster and damages more frequently after invincibility has worn off.
 - Breath of Life's invincibility frames last a bit longer.
 - Breath of Life now has a charge bar to show how much invincibility you have left.
+
+- Plan C now kills you only after you leave the room it was used on.
+- Plan C has updated graphical effects.

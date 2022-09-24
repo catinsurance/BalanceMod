@@ -1,4 +1,4 @@
 <items gfxroot="gfx/items/" version="1">
 	<active description="#DATAMINER_DESCRIPTION" gfx="Collectibles_481_Dataminer.png" id="481" name="#DATAMINER_NAME" maxcharges="3"/>
-    
+    <active achievement="305" description="#PLAN_C_DESCRIPTION" gfx="Collectibles_475_PlanC.png" id="475" name="#PLAN_C_NAME" maxcharges="0" />
 </items>
