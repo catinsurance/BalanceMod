@@ -15,3 +15,9 @@ v1.0.0 //
 
 - Plan C now kills you only after you leave the room it was used on.
 - Plan C has updated graphical effects.
+
+- Mom's Pad no longer applies a mass fear effect.
+- Mom's Pad now marks enemies in a small radius around Isaac.
+- Marked enemies will be targeted by other enemies.
+- Marked effect lasts 4 seconds.
+- Mom's Pad now plays a different sound on use.

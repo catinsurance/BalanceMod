@@ -39,7 +39,6 @@
 	<active description="#TAMMYS_HEAD_DESCRIPTION" gfx="Collectibles_038_TammysHead.png" id="38" maxcharges="1" name="#TAMMYS_HEAD_NAME" />
 	<active cooldown="220" description="#MOMS_BRA_DESCRIPTION" gfx="Collectibles_039_MomsBra.png" id="39" maxcharges="3" name="#MOMS_BRA_NAME" />
 	<active cooldown="30" description="#KAMIKAZE_DESCRIPTION" gfx="Collectibles_040_Kamikaze.png" id="40" maxcharges="0" name="#KAMIKAZE_NAME" addcostumeonpickup="true" />
-	<active cooldown="450" description="#MOMS_PAD_DESCRIPTION" gfx="Collectibles_041_MomsPad.png" id="41" maxcharges="3" name="#MOMS_PAD_NAME" />
 	<active description="#BOBS_ROTTEN_HEAD_DESCRIPTION" gfx="Collectibles_042_BobsRottenHead.png" id="42" maxcharges="2" name="#BOBS_ROTTEN_HEAD_NAME" />
 	<!-- <active description="#PILLS_HERE_DESCRIPTION" id="43" name="#PILLS_HERE_NAME" /> -->
 	<active cooldown="30" description="#TELEPORT_DESCRIPTION" gfx="Collectibles_044_Teleport.png" id="44" maxcharges="2" name="#TELEPORT_NAME" />
@@ -54,7 +53,7 @@
 	<passive description="#MAGNETO_DESCRIPTION" gfx="Collectibles_053_Magneto.png" id="53" name="#MAGNETO_NAME" />
 	<passive description="#TREASURE_MAP_DESCRIPTION" gfx="Collectibles_054_TreasureMap.png" id="54" name="#TREASURE_MAP_NAME" />
 	<passive description="#MOMS_EYE_DESCRIPTION" gfx="Collectibles_055_MomsEye.png" id="55" name="#MOMS_EYE_NAME" />
-	<active description="#LEMON_MISHAP_DESCRIPTION" gfx="Collectibles_056_LemonMishap.png" id="56" maxcharges="2" name="#LEMON_MISHAP_NAME" />
+	<active quality="0" description="#LEMON_MISHAP_DESCRIPTION" gfx="Collectibles_056_LemonMishap.png" id="56" maxcharges="2" name="#LEMON_MISHAP_NAME" />
 	<familiar description="#DISTANT_ADMIRATION_DESCRIPTION" gfx="Collectibles_057_DistantAdmiration.png" id="57" name="#DISTANT_ADMIRATION_NAME" />
 	<active cooldown="300" description="#BOOK_OF_SHADOWS_DESCRIPTION" gfx="Collectibles_058_BookOfShadows.png" id="58" maxcharges="3" name="#BOOK_OF_SHADOWS_NAME" />
 	<passive cache="damage" description="#THE_BOOK_OF_BELIAL_DESCRIPTION" gfx="Collectibles_034_TheBookOfBelial.png" id="59" maxcharges="3" name="#THE_BOOK_OF_BELIAL_NAME" hidden="true" />

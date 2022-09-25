@@ -40,6 +40,10 @@ function PlanC:OnUse(_, _, player)
         
         Game():GetRoom():EmitBloodFromWalls(30, 10)
 
+        if PlanC.PlayersToKill == nil then
+            PlanC.PlayersToKill = {}
+        end
+
         PlanC.PlayersToKill[PlayerTracker:GetPlayerIndex(player)] = true
         SaveManager:Set("PlanC", PlanC.PlayersToKill)
 

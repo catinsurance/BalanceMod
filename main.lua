@@ -5,6 +5,7 @@
 local BalanceMod = RegisterMod("Balance Mod", 1)
 local ChargeBars = require("BalanceMod.Utility.ChargeBars")
 local SaveManager = require("BalanceMod.Utility.SaveManager")
+local GiantBookApi = require("BalanceMod.API.GiantBookApi")
 
 -- //////////////////// --
 
@@ -33,6 +34,8 @@ end
 -- // Initialization // --
 
 SaveManager:Init(BalanceMod)
+GiantBookApi:Init(BalanceMod)
+
 BalanceMod:AddCallback(ModCallbacks.MC_POST_RENDER, ChargeBars.UpdateAllCustomChargeBars)
 
 -- Load every item change
@@ -41,6 +44,8 @@ BalanceMod:AddCallback(ModCallbacks.MC_POST_RENDER, ChargeBars.UpdateAllCustomCh
 require("BalanceMod.Items.Dataminer")(BalanceMod)
 require("BalanceMod.Items.BreathOfLife")(BalanceMod)
 require("BalanceMod.Items.PlanC")(BalanceMod)
+require("BalanceMod.Items.MomsPad")(BalanceMod)
+require("BalanceMod.Items.LemonMishap")(BalanceMod)
 
 -- //////////////////// --
 
