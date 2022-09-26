@@ -21,3 +21,36 @@ v1.0.0 //
 - Marked enemies will be targeted by other enemies.
 - Marked effect lasts 4 seconds.
 - Mom's Pad now plays a different sound on use.
+- Mom's Pad is now quality 1.
+
+- Lemon Mishap now applies a confusion effect on enemies that touch it's creep.
+- Lemon Mishap now deals 6 damage per tick instead of 8.
+
+- D10 now turns champions into their regular variant.
+- D10 has had it's charge increased from 1 -> 2.
+
+- Greatly increased The Black Bean's knockback.
+
+- Razor Blade now gives +2 damage for the current room instead of +1.2 damage.
+
+- Abel can now collect hearts, runes, cards, pills, keys, and bombs off the ground for the player.
+- Abel can now open chests that do not require keys or bombs.
+- Abel now automatically aims and shoots at the nearest enemy.
+- Abel now shoots 3 times every second as opposed to twice a second.
+- Abel now shoots spectral tears.
+
+- Dead Bird now applies bleeding.
+
+- Grilled Clottys has had it's Base HP reduced from 20 -> 16.
+
+- Big Spiders have had their Base HP reduced from 20 -> 15.
+
+- Keepers (Greed Heads) have had their Base HP reduced from 36 -> 33.
+
+- Mom's Hand now brings you back to the room prior to the one you were in when they grabbed you.
+    - Will bring you to the spawn room if you were last in a curse room.
+- Mom's Hand now has a special animation when you first enter a room. 
+
+- Poofers have had their Base HP reduced from 20 -> 16. This makes their effective health 56.
+
+- Clutch has had it's Base HP reduced from 500 -> 468.

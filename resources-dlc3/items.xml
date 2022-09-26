@@ -185,7 +185,6 @@
 	<passive cache="flying tearflag tearcolor" description="#DEAD_DOVE_DESCRIPTION" gfx="Collectibles_185_DeadDove.png" id="185" name="#DEAD_DOVE_NAME" devilprice="2" />
 	<active achievement="56" description="#BLOOD_RIGHTS_DESCRIPTION" gfx="Collectibles_186_BloodRights.png" id="186" maxcharges="0" name="#BLOOD_RIGHTS_NAME" />
 	<familiar achievement="65" description="#GUPPYS_HAIRBALL_DESCRIPTION" gfx="Collectibles_187_GuppysHairball.png" id="187" name="#GUPPYS_HAIRBALL_NAME" />
-	<familiar achievement="51" description="#ABEL_DESCRIPTION" gfx="Collectibles_188_Abel.png" id="188" name="#ABEL_NAME" />
 	<passive achievement="63" cache="firedelay damage speed range" description="#SMB_SUPER_FAN_DESCRIPTION" gfx="Collectibles_189_SMBSuperFan.png" hearts="99" id="189" maxhearts="2" name="#SMB_SUPER_FAN_NAME" />
 	<passive bombs="99" description="#PYRO_DESCRIPTION" gfx="Collectibles_190_Pyro.png" id="190" name="#PYRO_NAME" />
 	<passive cache="all" description="#3_DOLLAR_BILL_DESCRIPTION" gfx="Collectibles_191_3DollarBill.png" id="191" name="#3_DOLLAR_BILL_NAME" />
@@ -286,7 +285,7 @@
 	<active cooldown="14" description="#HOW_TO_JUMP_DESCRIPTION" gfx="collectibles_282_howtojump.png" id="282" maxcharges="0" name="#HOW_TO_JUMP_NAME" />
 	<active achievement="133" description="#D100_DESCRIPTION" gfx="collectibles_283_d100.png" id="283" maxcharges="6" name="#D100_NAME" special="true" />
 	<active achievement="148" description="#D4_DESCRIPTION" gfx="collectibles_284_d4.png" id="284" maxcharges="6" name="#D4_NAME" />
-	<active description="#D10_DESCRIPTION" gfx="collectibles_285_d10.png" id="285" maxcharges="1" name="#D10_NAME" />
+	<active description="#D10_DESCRIPTION" gfx="collectibles_285_d10.png" id="285" maxcharges="2" name="#D10_NAME" />
 	<active achievement="121" description="#BLANK_CARD_DESCRIPTION" gfx="collectibles_286_blankcard.png" id="286" maxcharges="4" name="#BLANK_CARD_NAME" />
 	<active achievement="122" description="#BOOK_OF_SECRETS_DESCRIPTION" gfx="collectibles_287_bookofsecrets.png" id="287" maxcharges="6" name="#BOOK_OF_SECRETS_NAME" />
 	<active description="#BOX_OF_SPIDERS_DESCRIPTION" gfx="collectibles_288_boxofspiders.png" id="288" maxcharges="2" name="#BOX_OF_SPIDERS_NAME" />

@@ -46,6 +46,14 @@ require("BalanceMod.Items.BreathOfLife")(BalanceMod)
 require("BalanceMod.Items.PlanC")(BalanceMod)
 require("BalanceMod.Items.MomsPad")(BalanceMod)
 require("BalanceMod.Items.LemonMishap")(BalanceMod)
+require("BalanceMod.Items.D10")(BalanceMod)
+require("BalanceMod.Items.BlackBean")(BalanceMod)
+require("BalanceMod.Items.RazorBlade")(BalanceMod)
+require("BalanceMod.Items.Abel")(BalanceMod)
+
+-- Load every enemy change
+
+require("BalanceMod.NPCs.MomsHand")(BalanceMod)
 
 -- //////////////////// --
 

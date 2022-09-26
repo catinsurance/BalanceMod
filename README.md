@@ -31,6 +31,17 @@ My point is that you should expect changes that don't significantly change the i
 ### **How do you know when something is in need of a buff/rework/nerf?**
 It depends on if it's an item, enemy, mechanic, and a whole lotta other factors. For items, I look at the pros, risks, and use cases then go from there. For enemies, I typically look at how fair each one of their attacks are (fair =/= difficult), the floor they appear in, and the core idea behind them. I will also try to study how they're placed in rooms so I can better understand what the developers were aiming for when making the enemy.
 
+### Which commonly regarded as overpowered/underpowered enemies or items are you for sure not planning on changing?
+I noticed that somewhat recently (as of 9/25/2022) the Binding of Isaac subreddit did a poll on what the worst items are in the game. Here are some of the top 30 that I, at least right now, know for a fact I won't be changing:
+
+- The Poop - This item serves it's purpose. You poop, you sometimes get a collectible, you knock back projectiles. It's not good, but that's okay.
+
+- Isaac's Tears - It is essentially an alternative to Tammy's Head. Tammy's Head typically applies a damage bonus on your tears, while this does not. This item recharges really quickly though, and also has a quick use time. I don't think it is bad for a quality 0 item.
+
+- Isaac's Heart - I think this item is extremely strong. It positions itself near you, gives Isaac massive contact damage, and releases creep and tears around you when it's charged. It definitely has a skill curve, but if you can master this item you can become really, really strong.
+
+- Kamikaze - Free bombs, instant use, lots of damage, though it takes a heart. I don't think this item is bad, but it's outclassed by lots of other items. That is okay! The game needs "bad" items so that players are forced to use what they have and adapt to survive.
+
 ### **Can I contribute?**
 I prefer to do the bulk of the coding myself (though I am new to modding on Isaac). The main thing I'm looking for are bug reports and any players willing to contribute their ideas and voice their opinions about the game's balance. Think an item is too weak? Let me know! Think a change I made was poorly implemented? Let me know in a constructive manner!
 

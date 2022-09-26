@@ -143,9 +143,6 @@
     <entity anm2path="003.007_Sister Maggy.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="13" friction="1" id="3" name="Sister Maggy" numGridCollisionPoints="12" shadowSize="11" stageHP="0" tags="cansacrifice" variant="7">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
     </entity>
-    <entity anm2path="003.008_Abel.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="13" friction="1" id="3" name="Abel" numGridCollisionPoints="12" shadowSize="11" stageHP="0" tags="cansacrifice" variant="8">
-        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
-    </entity>
     <entity anm2path="003.009_Ghost Baby.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="13" friction="1" id="3" name="Ghost Baby" numGridCollisionPoints="12" shadowSize="11" stageHP="0" tags="cansacrifice" variant="9">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
     </entity>
@@ -1835,7 +1832,7 @@
         <bestiary anim="Down" transform="0,0,1"/>
         <gibs amount="6" blood="0" bone="1" eye="0" gut="0" large="0"/>
     </entity>
-    <entity anm2path="094.000_Big Spider.anm2" baseHP="20" boss="0" champion="0" collisionDamage="1" collisionMass="30" collisionRadius="13" friction="1" id="94" name="#BIG_SPIDER" numGridCollisionPoints="12" portrait="60" reroll="true" shadowSize="17" stageHP="0" tags="spider" variant="0">
+    <entity anm2path="094.000_Big Spider.anm2" baseHP="15" boss="0" champion="0" collisionDamage="1" collisionMass="30" collisionRadius="13" friction="1" id="94" name="#BIG_SPIDER" numGridCollisionPoints="12" portrait="60" reroll="true" shadowSize="17" stageHP="0" tags="spider" variant="0">
         <bestiary anim="Walk" transform="0,0,1"/>
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
     </entity>
@@ -3566,7 +3563,7 @@
         <bestiary anim="Fly" transform="0,0,1"/>
         <gibs amount="12" blood="1" bone="0" eye="0" gut="1" large="1"/>
     </entity>
-    <entity anm2path="015.003_grilled clotty.anm2" baseHP="20" boss="0" champion="1" collisionDamage="1" collisionMass="10" collisionRadius="13" friction="1" id="15" name="#GRILLED_CLOTTY" numGridCollisionPoints="12" portrait="260" shadowSize="28" stageHP="0" variant="3">
+    <entity anm2path="015.003_grilled clotty.anm2" baseHP="16" boss="0" champion="1" collisionDamage="1" collisionMass="10" collisionRadius="13" friction="1" id="15" name="#GRILLED_CLOTTY" numGridCollisionPoints="12" portrait="260" shadowSize="28" stageHP="0" variant="3">
         <bestiary anim="Hop" transform="0,0,1"/>
         <gibs amount="6" blood="1" bone="1" eye="1" gut="0" large="0" worm="1"/>
     </entity>
@@ -4376,7 +4373,7 @@
         <bestiary anim="WalkVert" transform="0,0,1"/>
         <gibs amount="10" blood="1" bone="0" eye="1" gut="1" large="1"/>
     </entity>
-    <entity anm2path="892.000_poofer.anm2" baseHP="20" boss="0" champion="0" collisionDamage="1" collisionMass="40" collisionRadius="13" friction="1" id="892" name="#POOFER" numGridCollisionPoints="12" portrait="343" reroll="true" shadowSize="14" stageHP="0" tags="explosive_soul" variant="0">
+    <entity anm2path="892.000_poofer.anm2" baseHP="16" boss="0" champion="0" collisionDamage="1" collisionMass="40" collisionRadius="13" friction="1" id="892" name="#POOFER" numGridCollisionPoints="12" portrait="343" reroll="true" shadowSize="14" stageHP="0" tags="explosive_soul" variant="0">
         <bestiary anim="Idle0" transform="0,0,1"/>
         <gibs amount="10" blood="1" bone="0" eye="0" gut="1" large="1"/>
     </entity>
@@ -4529,7 +4526,7 @@
         <bestiary anim="Idle" transform="0,0,1"/>
         <gibs amount="10" blood="1" bone="1" eye="1" gut="1" large="0"/>
     </entity>
-    <entity anm2path="921.000_clutch.anm2" baseHP="500" boss="1" bossID="102" champion="0" collisionDamage="1" collisionMass="30" collisionRadius="30" friction="1" gridCollision="none" id="921" name="#CLUTCH" numGridCollisionPoints="12" portrait="137" shadowSize="22" stageHP="0" tags="ghost nodelirium" variant="0">
+    <entity anm2path="921.000_clutch.anm2" baseHP="468" boss="1" bossID="102" champion="0" collisionDamage="1" collisionMass="30" collisionRadius="30" friction="1" gridCollision="none" id="921" name="#CLUTCH" numGridCollisionPoints="12" portrait="137" shadowSize="22" stageHP="0" tags="ghost nodelirium" variant="0">
         <bestiary anm2path="921.000_clutch (bestiary).anm2" anim="Idle" transform="0,0,1"/>
         <gibs amount="10" blood="0" bone="0" eye="0" gut="0" large="1"/>
     </entity>

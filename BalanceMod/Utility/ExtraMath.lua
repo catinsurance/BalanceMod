@@ -1,5 +1,15 @@
 local ExtraMath = {}
 
+ExtraMath.TileLength = 40
+
+function ExtraMath:TilesToUnits(tiles)
+    return tiles * ExtraMath.TileLength
+end
+
+function ExtraMath:UnitsToTiles(units)
+    return units / ExtraMath.TileLength    
+end
+
 function ExtraMath:Clamp(value, min, max)
     if value < min then
         return min
