@@ -123,7 +123,6 @@
 	<active description="#MONSTER_MANUAL_DESCRIPTION" gfx="Collectibles_123_MonsterManual.png" id="123" maxcharges="6" name="#MONSTER_MANUAL_NAME" />
 	<active description="#DEAD_SEA_SCROLLS_DESCRIPTION" gfx="Collectibles_124_DeadSeaScrolls.png" id="124" maxcharges="2" name="#DEAD_SEA_SCROLLS_NAME" />
 	<passive bombs="5" description="#BOBBYBOMB_DESCRIPTION" gfx="Collectibles_125_BobbyBomb.png" id="125" name="#BOBBYBOMB_NAME" />
-	<active achievement="44" cache="damage" description="#RAZOR_BLADE_DESCRIPTION" gfx="Collectibles_126_RazorBlade.png" id="126" maxcharges="0" name="#RAZOR_BLADE_NAME" />
 	<active achievement="48" description="#FORGET_ME_NOW_DESCRIPTION" gfx="Collectibles_127_ForgetMeNow.png" id="127" maxcharges="0" name="#FORGET_ME_NOW_NAME" />
 	<familiar description="#FOREVER_ALONE_DESCRIPTION" gfx="Collectibles_128_ForeverAlone.png" id="128" name="#FOREVER_ALONE_NAME" />
 	<passive cache="speed" description="#BUCKET_OF_LARD_DESCRIPTION" gfx="Collectibles_129_BucketofLard.png" hearts="4" id="129" maxhearts="4" name="#BUCKET_OF_LARD_NAME" />
@@ -226,7 +225,7 @@
 	<passive blackhearts="2" description="#BLACK_LOTUS_DESCRIPTION" gfx="collectibles_226_blacklotus.png" hearts="4" id="226" maxhearts="2" name="#BLACK_LOTUS_NAME" soulhearts="2" />
 	<passive coins="3" description="#PIGGY_BANK_DESCRIPTION" gfx="collectibles_227_piggybank.png" id="227" name="#PIGGY_BANK_NAME" />
 	<passive cache="firedelay tearcolor" description="#MOMS_PERFUME_DESCRIPTION" gfx="collectibles_228_momsperfume.png" id="228" name="#MOMS_PERFUME_NAME" />
-	<passive cache="all" description="#MONSTROS_LUNG_DESCRIPTION" gfx="collectibles_229_monstroslung.png" id="229" name="#MONSTROS_LUNG_NAME" />
+	<passive cache="all" description="#MONSTROS_LUNG_DESCRIPTION" gfx="collectibles_229_monstroslung.png" id="229" name="#MONSTROS_LUNG_NAME" quality="3"/>
 	<passive achievement="128" cache="damage speed" description="#ABADDON_DESCRIPTION" devilprice="2" gfx="collectibles_230_abaddon.png" id="230" name="#ABADDON_NAME" />
 	<passive cache="tearcolor" description="#BALL_OF_TAR_DESCRIPTION" gfx="collectibles_231_balloftar.png" id="231" name="#BALL_OF_TAR_NAME" />
 	<passive achievement="138" cache="speed" description="#STOP_WATCH_DESCRIPTION" gfx="collectibles_232_stopwatch.png" id="232" name="#STOP_WATCH_NAME" />
@@ -285,7 +284,6 @@
 	<active cooldown="14" description="#HOW_TO_JUMP_DESCRIPTION" gfx="collectibles_282_howtojump.png" id="282" maxcharges="0" name="#HOW_TO_JUMP_NAME" />
 	<active achievement="133" description="#D100_DESCRIPTION" gfx="collectibles_283_d100.png" id="283" maxcharges="6" name="#D100_NAME" special="true" />
 	<active achievement="148" description="#D4_DESCRIPTION" gfx="collectibles_284_d4.png" id="284" maxcharges="6" name="#D4_NAME" />
-	<active description="#D10_DESCRIPTION" gfx="collectibles_285_d10.png" id="285" maxcharges="2" name="#D10_NAME" />
 	<active achievement="121" description="#BLANK_CARD_DESCRIPTION" gfx="collectibles_286_blankcard.png" id="286" maxcharges="4" name="#BLANK_CARD_NAME" />
 	<active achievement="122" description="#BOOK_OF_SECRETS_DESCRIPTION" gfx="collectibles_287_bookofsecrets.png" id="287" maxcharges="6" name="#BOOK_OF_SECRETS_NAME" />
 	<active description="#BOX_OF_SPIDERS_DESCRIPTION" gfx="collectibles_288_boxofspiders.png" id="288" maxcharges="2" name="#BOX_OF_SPIDERS_NAME" />
@@ -785,7 +783,6 @@
 	<trinket cache="tearflag range firedelay" description="#HOOK_WORM_DESCRIPTION" gfx="trinket_026_hookworm.png" id="26" name="#HOOK_WORM_NAME" />
 	<trinket cache="shotspeed" description="#WHIP_WORM_DESCRIPTION" gfx="trinket_027_whipworm.png" id="27" name="#WHIP_WORM_NAME" />
 	<trinket achievement="117" description="#BROKEN_ANKH_DESCRIPTION" gfx="trinket_028_brokenankh.png" id="28" name="#BROKEN_ANKH_NAME" />
-	<trinket description="#FISH_HEAD_DESCRIPTION" gfx="trinket_029_fishhead.png" id="29" name="#FISH_HEAD_NAME" />
 	<trinket description="#PINKY_EYE_DESCRIPTION" gfx="trinket_030_pinkyeye.png" id="30" name="#PINKY_EYE_NAME" />
 	<trinket description="#PUSH_PIN_DESCRIPTION" gfx="trinket_031_pushpin.png" id="31" name="#PUSH_PIN_NAME" />
 	<trinket description="#LIBERTY_CAP_DESCRIPTION" gfx="trinket_032_libertycap.png" id="32" name="#LIBERTY_CAP_NAME" />

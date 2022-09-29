@@ -175,7 +175,7 @@ end
 
 -- /////////////////// --
 
-return function (BalanceMod)
+return function (BalanceMod, eid)
     BalanceMod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, Abel.OnUpdate, Abel.Familiar)
     BalanceMod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Abel.OnCacheUpdate)
 end

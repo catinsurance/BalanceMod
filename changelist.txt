@@ -1,6 +1,17 @@
 Thanks for installing my mod. Here are the changes:
 
-v1.0.0 //
+v0.1.0 //
+
+The following are new additions to the game:
+
+- Added Nazar.
+- Nazar will turn all champions into their non-champion variant.
+- Nazar cannot be found in challenges.
+
+- Added Carrot Juice.
+- Carrot Juice grants +0.4 shot speed and increases Isaac's tear knockback upon pickup.
+
+The following are changes made to items:
 
 - Dataminer no longer rerolls any stats.
 - Dataminer grants +1 damage and +0.5 fire rate for the room on each use.
@@ -26,12 +37,42 @@ v1.0.0 //
 - Lemon Mishap now applies a confusion effect on enemies that touch it's creep.
 - Lemon Mishap now deals 6 damage per tick instead of 8.
 
-- D10 now turns champions into their regular variant.
-- D10 has had it's charge increased from 1 -> 2.
+- D10 can no longer be found in challenges.
+- D10 quality has been increased from 0 -> 1.
+- D10 charge increased from 1 -> 3.
+- D10 only rerolls champion enemies.
+- Rerolling a champion with the D10 will remove it's champion effect.
+- Rerolled champions will drop special loot when rerolled.
+    - Red champions will drop a random heart.
+    - Yellow champions will drop random battery.
+    - Green champions will drop a random pill.
+    - Orange champions will drop 2 random coins.
+    - Dark blue champions will give the player 3 blue flies.
+    - Black champions explode and drop a random bomb.
+    - White champions will drop an eternal heart.
+    - Gray champions will drop a random key.
+    - Translucent champions will drop a locked chest, or very rarely a mega chest.
+    - Black champions will drop a red chest.
+    - Magenta champions will drop a random card.
+    - Violet champions will drop a random trinket.
+    - Dark red champions will drop a double heart.
+    - Light blue champions will drop a half heart.
+    - Camouflage champions will drop a random rune.
+    - Pulsing green champions will drop a grab bag.
+    - Pulsing gray champions will drop a black sack.
+    - Light white champions will give the player 3 blue spiders.
+    - Small champions will drop a One Makes You Small pill.
+    - Large champions will drop a One Makes You Larger pill.
+    - Pulsing red champions will explode into red creep that harms enemies.
+    - Pulsating champions will give the player 2 locusts of wrath.
+    - Crown champions will drop a dime.
+    - Skull champions will drop a black heart.
+    - Brown champions will fart anticlimactically.
+    - Rainbow champions will drop an item pedestal from the Shop item pool.
 
 - Greatly increased The Black Bean's knockback.
 
-- Razor Blade now gives +2 damage for the current room instead of +1.2 damage.
+- Razor Blade now gives +1.8 damage for the current room instead of +1.2 damage.
 
 - Abel can now collect hearts, runes, cards, pills, keys, and bombs off the ground for the player.
 - Abel can now open chests that do not require keys or bombs.
@@ -39,7 +80,14 @@ v1.0.0 //
 - Abel now shoots 3 times every second as opposed to twice a second.
 - Abel now shoots spectral tears.
 
-- Dead Bird now applies bleeding.
+- Fish Head now has a 1/6 chance to spawn a pestilence locust whenever Isaac takes damage.
+- Does not trigger on self-damage (curse rooms, blood donation machines, etc).
+
+- Dead Bird now applies a slowing effect to enemies that it hurts.
+
+- Monstro's Lung has had it's quality level increased from 2 -> 3.
+
+The following are changes made to enemies:
 
 - Grilled Clottys has had it's Base HP reduced from 20 -> 16.
 
@@ -48,9 +96,17 @@ v1.0.0 //
 - Keepers (Greed Heads) have had their Base HP reduced from 36 -> 33.
 
 - Mom's Hand now brings you back to the room prior to the one you were in when they grabbed you.
-    - Will bring you to the spawn room if you were last in a curse room.
+- Will bring you to the spawn room if you were last in a curse room.
 - Mom's Hand now has a special animation when you first enter a room. 
 
 - Poofers have had their Base HP reduced from 20 -> 16. This makes their effective health 56.
 
 - Clutch has had it's Base HP reduced from 500 -> 468.
+
+The following are some miscellaneous changes:
+
+- Brown Nugget has been added to the "Baby Shop" item pool.
+
+- C.H.A.D now has a 1/2 chance to spawn a normal item instead of Little C.H.A.D.
+
+- Gish now has a 1/2 chance to spawn a normal item instead of Little Gish.

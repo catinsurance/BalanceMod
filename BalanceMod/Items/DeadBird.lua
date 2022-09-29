@@ -8,13 +8,14 @@ local DeadBird = {
 ---@param entity EntityEffect
 ---@param source EntityRef
 function DeadBird:DamageTaken(entity, _, _, source)
-    if entity:IsEnemy() and source.Variant == EffectVariant.DEAD_BIRD and not entity:HasEntityFlags(EntityFlag.FLAG_BLEED_OUT) then
-        entity:AddEntityFlags(EntityFlag.FLAG_BLEED_OUT)
-    end
-end
+    if not entity:IsEnemy() then return end
 
-function DeadBird:OnUpdate()
-    
+    if source.Type == EntityType.ENTITY_FAMILIAR and source.Variant == FamiliarVariant.DEAD_BIRD then
+        if entity:HasEntityFlags(EntityFlag.FLAG_SLOW) then return end
+
+        local player = source.Entity:ToFamiliar().Player
+        entity:AddSlowing(EntityRef(player), 60, 0.5, Color(0.5, 0.3, 0.3, 1, 0, 0, 0))
+    end
 end
 
 -- /////////////////// --

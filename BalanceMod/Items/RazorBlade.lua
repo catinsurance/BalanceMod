@@ -2,8 +2,7 @@
 
 local RazorBlade = {
     Item = Isaac.GetItemIdByName("Razor Blade"),
-    VanillaIncrease = 1.2,
-    DamageIncrease = 0.8, -- added onto VanillaIncrease
+    DamageIncrease = 1.8
 }
 
 ---@param player EntityPlayer

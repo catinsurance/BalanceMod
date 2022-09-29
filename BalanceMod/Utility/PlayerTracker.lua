@@ -25,4 +25,9 @@ function PlayerTracker:GetPlayers()
     return players
 end
 
+---@param player EntityPlayer
+function PlayerTracker:HasMomsBox(player)
+    return player:GetActiveItem(ActiveSlot.SLOT_PRIMARY) == CollectibleType.COLLECTIBLE_MOMS_BOX or player:GetActiveItem(ActiveSlot.SLOT_SECONDARY) == CollectibleType.COLLECTIBLE_MOMS_BOX
+end
+
 return PlayerTracker
