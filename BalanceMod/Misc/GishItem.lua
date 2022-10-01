@@ -15,7 +15,7 @@ function Gish:NewItemPedestal(itemPedestal)
 
     local roll = rng:RandomFloat()
     local success = (roll < Gish.Chance)
-    if not success then return end
+    if success then return end
     
     PoolHelper:RerollPedestalIfType(itemPedestal:ToPickup(), CollectibleType.COLLECTIBLE_LITTLE_GISH, ItemPoolType.POOL_BOSS, rng)
 end

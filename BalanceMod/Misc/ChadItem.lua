@@ -15,7 +15,7 @@ function Chad:NewItemPedestal(itemPedestal)
 
     local roll = rng:RandomFloat()
     local success = (roll < Chad.Chance)
-    if not success then return end
+    if success then return end
     
     PoolHelper:RerollPedestalIfType(itemPedestal:ToPickup(), CollectibleType.COLLECTIBLE_LITTLE_CHAD, ItemPoolType.POOL_BOSS, rng)
 end

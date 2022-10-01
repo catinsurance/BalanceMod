@@ -2,7 +2,7 @@
 
 local FishHead = {
     Trinket = Isaac.GetTrinketIdByName("Fish Head"),
-    Chance = 1/6,
+    Chance = 1/4,
     BlacklistedFlags = {
         DamageFlag.DAMAGE_FIRE,
         DamageFlag.DAMAGE_CLONES,
