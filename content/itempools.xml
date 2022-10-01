@@ -2,9 +2,6 @@
     <Pool Name="boss">
         <Item Name="Carrot Juice" DecreaseBy="1" RemoveOn="0.1" Weight="1"/>
     </Pool>
-    <Pool Name="dungeon">
-        <Item Name="Carrot Juice" DecreaseBy="1" RemoveOn="0.1" Weight="1"/>
-    </Pool>
     <Pool Name="treasure">
         <Item Name="Dataminer" DecreaseBy="1" RemoveOn="0.1" Weight="1"/>
         <Item Name="Mom's Pad" DecreaseBy="1" RemoveOn="0.1" Weight="1"/>
