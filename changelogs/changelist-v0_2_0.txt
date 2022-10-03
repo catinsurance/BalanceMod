@@ -1,0 +1,5 @@
+Thanks for installing my mod. Here are the changes:
+
+v0.2.0 //
+
+The following are changes made to items:

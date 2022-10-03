@@ -1,0 +1,13 @@
+Thanks for installing my mod. Here are the changes:
+
+v0.1.1 //
+
+The following are changes made to items:
+
+- Mom's Bottle of Pills has had its charge reduced from 6 -> 5 rooms.
+
+- Monstro's Tooth has had its charge reduced from 3 -> 2 rooms.
+
+- Changed the sprite for Carrot Juice.
+
+- Reduced the file size of the mod.
