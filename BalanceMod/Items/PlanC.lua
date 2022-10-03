@@ -63,4 +63,6 @@ end
 return function (BalanceMod)
     BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, PlanC.OnUse, PlanC.Item)
     BalanceMod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, PlanC.NewRoom)
+    if not EID then return end
+    EID:addCollectible(PlanC.Item, "Kills all enemies in the room#Kills the player upon entering the next room#Consumed on use")
 end

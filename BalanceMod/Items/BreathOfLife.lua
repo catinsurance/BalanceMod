@@ -40,4 +40,7 @@ end
 
 return function (BalanceMod)
     BalanceMod:AddCallback(ModCallbacks.MC_POST_UPDATE, BreathOfLife.OnUpdate)
+    if EID then
+        EID:addCollectible(BreathOfLife.Item, "Isaac will become invincible for a short time when his charge is fully depleted#Deplete charge by holding the active item button#{{Warning}} Holding for too long after becoming invincible will deal damage to Isaac every second#Charge will regenerate when active item button not held#Touching enemies while invincible summons a beam of light to damage them") 
+    end
 end

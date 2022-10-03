@@ -80,4 +80,6 @@ return function (BalanceMod)
     BalanceMod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, Dataminer.OnEnd)
 
     BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, Dataminer.OnUseItem, Dataminer.Item)
+    if not EID then return end
+    EID:addCollectible(Dataminer.Item, "On use:#{{ArrowUp}} +1 Damage#{{ArrowUp}} +0.5 Firerate#{{Warning}} Rotates all enemies#Effect only lasts for the room#Does not affect hitboxes")
 end 

@@ -63,4 +63,6 @@ end
 
 return function (BalanceMod)
     BalanceMod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, FishHead.OnEntityHurt, EntityType.ENTITY_PLAYER)
+    if not EID then return end
+    EID:addTrinket(FishHead.Trinket, "1/4 chance to spawn a Locust of Pestilence when Isaac takes damage#Locust deals double your damage and applies poison")
 end

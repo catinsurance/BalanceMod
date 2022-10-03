@@ -11,6 +11,6 @@ The following are changes made to items:
 
 - Changed the sprite for Carrot Juice.
 
-- Reduced the file size of the mod.
+- Optimized the file size of the mod.
 
 - Added External Item Descriptions support.

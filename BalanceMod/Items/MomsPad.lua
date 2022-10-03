@@ -5,7 +5,7 @@ local GiantBook = require("BalanceMod.API.GiantBookApi")
 local MomsPad = {
     Item = Isaac.GetItemIdByName("Mom's Pad"),
     RadiusOfEffect = 115,
-    EffectLifetime = 4 * 60, -- 6 seconds,
+    EffectLifetime = 4 * 60, -- 4 seconds,
     EntityTracker = {}
 }
 
@@ -45,4 +45,6 @@ end
 return function (BalanceMod)
     BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, MomsPad.OnUse, MomsPad.Item)
     BalanceMod:AddCallback(ModCallbacks.MC_NPC_UPDATE, MomsPad.OnEntityUpdate)
+    if not EID then return end
+    EID:addCollectible(MomsPad.Item, "{{Bait}} Baits enemies in a small radius around Isaac#Baited enemies will be targeted by other enemies#Effect lasts 4 seconds")
 end

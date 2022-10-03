@@ -17,4 +17,6 @@ end
 
 return function (BalanceMod)
     BalanceMod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, LemonMishap.DamageTaken)
+    if not EID then return end
+    EID:addCollectible(LemonMishap.Item, "Spawns a tiny pool of creep#Deals 24 damage per second#{{Confusion}} Enemies that touch the creep will become confused")
 end

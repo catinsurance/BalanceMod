@@ -28,4 +28,8 @@ end
 
 return function (BalanceMod)
     BalanceMod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, BlackBean.OnHurt, EntityType.ENTITY_PLAYER)
+    if EID then
+        EID:addCollectible(BlackBean.Item, "Isaac will fart upon taking damage#Fart deals poison damage#{{Collectible" .. BlackBean.Item .. "}} Fart pushes enemies things away very strongly")
+    end
+    
 end

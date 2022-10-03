@@ -22,4 +22,6 @@ end
 
 return function (BalanceMod)
     BalanceMod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, DeadBird.DamageTaken)
+    if not EID then return end
+    EID:addCollectible(DeadBird.Item, "A bird familiar will appear whenever Isaac takes damage#The bird chases enemies and deals contact damage#The bird will slow enemies it touches")
 end
