@@ -1,0 +1,11 @@
+<items gfxroot="gfx/items/" version="1">
+    <passive id="1" cache="shotspeed tearflag" description="Shotspeed + knockback up" gfx="item_c01_carrotjuice.png" name="Carrot Juice" quality="1" tags="offensive"/>
+	<active description="Glitch power" gfx="Collectibles_481_Dataminer.png" id="481" name="Dataminer" maxcharges="3" tags="offensive"/>
+    <active achievement="305" description="My only option" gfx="Collectibles_475_PlanC.png" id="475" name="Plan C" maxcharges="0" tags="offensive"/>
+    <active cooldown="450" description="That's not sanitary" gfx="Collectibles_041_MomsPad.png" id="41" maxcharges="3" name="Mom's Pad" tags="offensive"/>
+    <familiar quality="1" achievement="51" description="Mirrored buddy" gfx="Collectibles_188_Abel.png" id="188" name="Abel" cache="familiars" tags="offensive baby"/>
+	<trinket description="Evil begone" gfx="trinket_c01_nazar.png" name="Nazar" tags="nochallenge offensive"/>
+    <trinket description="It's rotten" gfx="trinket_029_fishhead.png" id="29" name="Fish Head" />
+	<active description="Reroll champions" gfx="collectibles_285_d10.png" id="285" maxcharges="3" quality="2" name="D10" />
+	<active achievement="44" cache="damage" description="No pain no gain" gfx="Collectibles_126_RazorBlade.png" id="126" maxcharges="0" name="Razor Blade" tags="nolostbr nochallenge"/>
+</items>
