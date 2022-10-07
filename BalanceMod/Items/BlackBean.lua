@@ -31,5 +31,6 @@ return function (BalanceMod)
     if EID then
         EID:addCollectible(BlackBean.Item, "Isaac will fart upon taking damage#Fart deals poison damage#{{Collectible" .. BlackBean.Item .. "}} Fart pushes enemies things away very strongly")
     end
-    
+
+    return false
 end

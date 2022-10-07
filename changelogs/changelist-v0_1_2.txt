@@ -1,0 +1,15 @@
+Thanks for installing my mod.
+Previous changes can be found here: https://github.com/maya-bee/BalanceMod/tree/main/changelogs
+
+v0.1.2 //
+
+- Fixed mod compatibility and numerous crashes and bugs
+
+- Lemon Mishap has had it's damage increased back to 8 damage per tick.
+
+- Fish Head will now activate regardless if the damage was self-inflicted or not. 
+
+- Right now, Breath of Life no longer has its depletion rate and smaller charge due to a technical limitation.
+    - This will be fixed in an update releasing tomorrow. 
+    - I needed to get this update out ASAP.
+    - Monstro's Tooth and Mom's Bottle of Pills have also had their charges reverted for the reason above. 

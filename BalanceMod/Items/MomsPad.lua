@@ -45,6 +45,12 @@ end
 return function (BalanceMod)
     BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, MomsPad.OnUse, MomsPad.Item)
     BalanceMod:AddCallback(ModCallbacks.MC_NPC_UPDATE, MomsPad.OnEntityUpdate)
-    if not EID then return end
-    EID:addCollectible(MomsPad.Item, "{{Bait}} Baits enemies in a small radius around Isaac#Baited enemies will be targeted by other enemies#Effect lasts 4 seconds")
+    if EID then
+        EID:addCollectible(MomsPad.Item, "{{Bait}} Baits enemies in a small radius around Isaac#Baited enemies will be targeted by other enemies#Effect lasts 4 seconds")
+    end
+
+    return {
+        OldItemId = CollectibleType.COLLECTIBLE_MOMS_PAD,
+        NewItemId = MomsPad.Item,
+    }
 end

@@ -190,6 +190,12 @@ return function (BalanceMod)
     BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, D10.OnRoomLeft)
     BalanceMod:AddCallback(ModCallbacks.MC_POST_UPDATE, D10.GameUpdate)
     BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_END, D10.OnRoomLeft)
-    if not EID then return end
-    EID:addCollectible(D10.Item, "Rerolls champions on use#Rerolled champions will become non-champions#Rerolled champions will drop special loot based on their color")
+    if EID then
+        EID:addCollectible(D10.Item, "Rerolls champions on use#Rerolled champions will become non-champions#Rerolled champions will drop special loot based on their color")
+    end
+
+    return {
+        OldItemId = CollectibleType.COLLECTIBLE_D10,
+        NewItemId = D10.Item,
+    }
 end

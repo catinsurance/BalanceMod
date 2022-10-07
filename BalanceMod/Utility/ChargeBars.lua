@@ -32,15 +32,6 @@ ChargeBar.ChargeBarState = ChargeBarState
 
 -- // Local Functions // --
 
-local function GetArrayLength(table) -- faster but only works for arrays
-    local counter = 0
-    for _ in ipairs(table) do
-        counter = counter + 1
-    end
-
-    return counter
-end
-
 local function GetTableLength(table) -- slower but works for all tables
     local counter = 0
     for _ in pairs(table) do

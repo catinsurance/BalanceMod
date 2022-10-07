@@ -4,3 +4,7 @@ Previous changes can be found here: https://github.com/maya-bee/BalanceMod/tree/
 v0.2.0 //
 
 The following are changes made to items:
+
+- Perfection now has 5 different tiers.
+- Perfection drops a tier every time the player gets hit.
+- Perfection will be destroyed after the player has sustained 5 hits.
