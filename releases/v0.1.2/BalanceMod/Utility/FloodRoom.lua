@@ -1,0 +1,1 @@
+local a={}a.MuteFlush=false;function a:Flood(b)b:UseActiveItem(CollectibleType.COLLECTIBLE_FLUSH)a.MuteFlush=true end;function a:PostUpdate()if a.MuteFlush and SFXManager():IsPlaying(SoundEffect.SOUND_FLUSH)then SFXManager():Stop(SoundEffect.SOUND_FLUSH)a.MuteFlush=false end end;return a

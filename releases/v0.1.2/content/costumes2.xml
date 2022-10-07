@@ -1,0 +1,3 @@
+<costumes anm2root="gfx/">
+    <costume anm2path="carrot_costume.anm2" type="passive" id="1"/>
+</costumes>

@@ -1,0 +1,13 @@
+<items gfxroot="gfx/items/" version="1">
+    <passive id="1" cache="shotspeed tearflag" description="Shotspeed + knockback up" gfx="item_c01_carrotjuice.png" name="Carrot Juice" quality="1" tags="offensive"/>
+	<passive id="500" cache="all" description="#MONSTROS_LUNG_DESCRIPTION" gfx="collectibles_229_monstroslung.png" id="229" name="#MONSTROS_LUNG_NAME" quality="3"/>
+    <active id="501" cooldown="31" description="#BREATH_OF_LIFE_DESCRIPTION" gfx="collectibles_326_breathoflife.png" maxcharges="6" name="#BREATH_OF_LIFE_NAME" chargetype="special" />
+    <active id="502" description="Glitch power" gfx="Collectibles_481_Dataminer.png" name="Dataminer" maxcharges="3" tags="offensive"/>
+    <active id="503" achievement="305" description="My only option" gfx="Collectibles_475_PlanC.png" name="Plan C" maxcharges="0" tags="offensive"/>
+    <active id="504" quality="0" cooldown="450" description="That's not sanitary" gfx="Collectibles_041_MomsPad.png" maxcharges="3" name="Mom's Pad" tags="offensive"/>
+    <familiar id="505" quality="1" achievement="51" description="Mirrored buddy" gfx="Collectibles_188_Abel.png" name="Abel" cache="familiars" tags="offensive baby"/>
+	<active id="506" description="Reroll champions" gfx="collectibles_285_d10.png" maxcharges="3" quality="1" name="D10" />
+	<active id="507" achievement="44" cache="damage" description="No pain no gain" gfx="Collectibles_126_RazorBlade.png" maxcharges="0" name="Razor Blade" tags="nolostbr nochallenge"/>
+    <trinket description="Evil begone" gfx="trinket_c01_nazar.png" name="Nazar" tags="nochallenge offensive"/>
+    <trinket description="It's rotten" gfx="trinket_029_fishhead.png" name="Fish Head" />
+</items>
