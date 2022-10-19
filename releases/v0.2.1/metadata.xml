@@ -9,10 +9,12 @@ The answer to all of those questions should be yes. No game is perfect, but with
 
 This mod contains dozens of item and enemy reworks and tweaks. You can find the most recent changelog below!
 
-v0.2.0 Changelog:
-https://github.com/maya-bee/BalanceMod/blob/main/changelogs/changelist-v0_2_0.txt
+Changelogs:
+https://github.com/maya-bee/BalanceMod/tree/main/changelogs
 
 This mod is actively undergoing development by me (one person!). Join the Discord server below to help contribute ideas!
+
+v0.2.1
 
 Discord:
 https://discord.gg/bNhNkGa6QX
@@ -20,7 +22,7 @@ Github:
 https://github.com/maya-bee/BalanceMod
 Youtube:
 https://www.youtube.com/channel/UCG9FvihQ9Ab6YUatmp9yaBw</description>
-    <version>1.6</version>
+    <version>1.7</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
     <tag id="Items"/>

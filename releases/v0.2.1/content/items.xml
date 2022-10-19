@@ -1,0 +1,26 @@
+<items gfxroot="gfx/items/" version="1">
+    <passive id="1" cache="shotspeed tearflag" description="Shotspeed + knockback up" gfx="item_c01_carrotjuice.png" name="Carrot Juice" quality="1" tags="offensive"/>
+
+	<passive id="500" cache="all" description="#MONSTROS_LUNG_DESCRIPTION" gfx="collectibles_229_monstroslung.png" id="229" name="#MONSTROS_LUNG_NAME" quality="3"/>
+    
+    <active id="501" cooldown="31" description="Breath of Life" gfx="collectibles_326_breathoflife.png" maxcharges="4" name="#BREATH_OF_LIFE_NAME" chargetype="special" />
+    <active id="502" description="Glitch power" gfx="Collectibles_481_Dataminer.png" name="Dataminer" maxcharges="3" tags="offensive"/>
+    <active id="503" achievement="305" description="My only option" gfx="Collectibles_475_PlanC.png" name="Plan C" maxcharges="0" tags="offensive"/>
+    <active id="504" quality="0" cooldown="450" description="That's not sanitary" gfx="Collectibles_041_MomsPad.png" maxcharges="3" name="Mom's Pad" tags="offensive"/>
+    <familiar id="505" quality="1" achievement="51" description="Mirrored buddy" gfx="Collectibles_188_Abel.png" name="Abel" cache="familiars" tags="offensive baby"/>
+	<active id="506" description="Reroll champions" gfx="collectibles_285_d10.png" maxcharges="3" quality="1" name="D10" />
+	<active id="507" achievement="44" cache="damage" description="No pain no gain" gfx="Collectibles_126_RazorBlade.png" maxcharges="0" name="Razor Blade" tags="nolostbr nochallenge"/>
+    <active id="508" description="Save your life" gfx="item_c03_thejar.png" maxcharges="0" name="The Jar" tags="nolostbr"/>
+    <active id="509" description="Save your life" gfx="item_c02_thejarfull.png" maxcharges="0" name="The Jar (Full)" tags="nolostbr"/>
+    <familiar id="510" quality="1" description="Don't cry over it..." gfx="collectibles_436_milk.png" name="Milk!" cache="familiars" tags="nolostbr uniquefamiliar"/>
+    <active id="511" description="Reusable pill generator" gfx="collectibles_102_momsbottleofpills.png" quality="1" name="Mom's Bottle of Pills" maxcharges="5" tags="offensive mom nocantrip"/>
+
+    <trinket description="Evil begone" gfx="trinket_c01_nazar.png" name="Nazar" tags="nochallenge offensive"/>
+    <trinket description="It's rotten" gfx="trinket_029_fishhead.png" name="Fish Head" />
+    
+    <trinket description="Luck way up. Don't lose it!" gfx="trinket_145_perfection.png" name="Perfection" tags="offensive" cache="luck"/>
+    <trinket description="Luck way up. Don't mess up again!" gfx="trinket_c03_bperfection.png" name="Excellence" tags="offensive" cache="luck"/>
+    <trinket description="Luck way up. You could've done better!" gfx="trinket_c04_cperfection.png" name="Mediocrity" tags="offensive" cache="luck"/>
+    <trinket description="Luck up. How disappointing!" gfx="trinket_c05_dperfection.png" name="Incompetence" tags="offensive" cache="luck"/>
+    <trinket description="Luck up. How embarrassing!" gfx="trinket_c06_fperfection.png" name="Failure" tags="offensive" cache="luck"/>
+</items>

@@ -1,0 +1,11 @@
+Thanks for installing my mod.
+Previous changes can be found here: https://github.com/maya-bee/BalanceMod/tree/main/changelogs
+
+v0.2.1 //
+
+- Potential fix for an issue where you screen would turn completely black
+
+- Fixed an issue with Cursed Eye's knockback tweak not working consistently
+
+- The Jar can no longer be found naturally by the Lost
+    - It is still available through items like Spindown Dice and Death Certificate.
