@@ -1,0 +1,13 @@
+Thanks for installing my mod.
+Previous changes can be found here: https://github.com/maya-bee/BalanceMod/tree/main/changelogs
+
+v0.2.2 //
+
+- How to Jump now only gives invincibility frames after the jump as opposed to on use.
+- How to Jump now gives only 10 frames of invincibility.
+
+- Perfection now only has 3 tiers instead of 5.
+- Perfection tiers give the following stats:
+    - Tier 3: +10 Luck
+    - Tier 2: +6 Luck
+    - Tier 1: +2 Luck
