@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <name>Balance Mod</name>
+    <directory>balancemod</directory>
+    <id>2869774966</id>
+    <description>Does an item ever make you disappointed whenever you see it? Does an enemy ever make you annoyed when you have to fight it? Does something ever feel too weak or too difficult in Repentance?
+
+The answer to all of those questions should be yes. No game is perfect, but with this mod I'm trying to iron out the kinks in Repentance to make the game fun and fair while keeping it difficult.
+
+This mod contains dozens of item and enemy reworks and tweaks. You can find the most recent changelog below!
+
+Changelogs:
+https://github.com/maya-bee/BalanceMod/tree/main/changelogs
+
+This mod is actively undergoing development by me (one person!). Join the Discord server below to help contribute ideas!
+
+v0.2.2
+
+Discord:
+https://discord.gg/bNhNkGa6QX
+Github:
+https://github.com/maya-bee/BalanceMod
+Youtube:
+https://www.youtube.com/channel/UCG9FvihQ9Ab6YUatmp9yaBw</description>
+    <version>1.8</version>
+    <visibility>Public</visibility>
+    <tag id="Lua"/>
+    <tag id="Items"/>
+    <tag id="Active Items"/>
+    <tag id="Trinkets"/>
+    <tag id="Familiars"/>
+    <tag id="Enemies"/>
+    <tag id="Tweaks"/>
+</metadata>

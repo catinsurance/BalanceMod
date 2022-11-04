@@ -1,0 +1,10 @@
+Thanks for installing my mod.
+Previous changes can be found here: https://github.com/maya-bee/BalanceMod/tree/main/changelogs
+
+v0.3.0 //
+
+- Perfection and its tiers no longer erroneously drop randomly.
+
+- Thunder Thighs has add its speed down decreased from -0.4 -> -0.3.
+
+- Fixed an issue where familiars would not move correctly.
