@@ -1,0 +1,20 @@
+Thanks for installing my mod.
+Previous changes can be found here: https://github.com/maya-bee/BalanceMod/tree/main/changelogs
+
+v0.3.0 //
+
+- Clicker no longer removes your most recent passive.
+- Clicker converts red hearts to soul hearts if the character transformed into cannot have red hearts.
+    - Bone hearts will be emptied and the player will gain a soul heart if the character transformed into cannot have red hearts.
+    - Eternal hearts will be converted into a one-time holy mantle effect if the character cannot have eternal hearts.
+- All hearts will be converted into a minimum of 2 coin hearts and a maximum of 3 coin hearts when transformed into the Keeper or Tainted Keeper with Clicker.
+- Clicker will remember how much HP you had before use.
+   - If transformed from Lost, Tainted Lost, Keeper, or Tainted Keeper into another character, the HP you had before you turned into one of the said characters will be regained HP with the rules stated above.
+   - If transformed from Bethany, the soul hearts you had before you turned into Bethany will be regained.
+   - If transformed into Tainted Bethany, the red hearts you had before you turned into Bethany will be regained.
+- If turned into Jacob and Esau by Clicker, both twins will have the items you had before transformation.
+- If turned into Jacob and Esau by Clicker, both twins will have the same amount of HP.
+- If turned into Tainted Lost by Clicker, you will receive a one-time holy mantle effect.
+- Car battery no longer has any interaction with Clicker.
+- Clicker will not appear if playing as a modded character and will not work if playing as a modded character due to technical limitations.
+- Clicker cannot be used as the Soul form of the Forgotten. You must switch out of the soul form to use the item.

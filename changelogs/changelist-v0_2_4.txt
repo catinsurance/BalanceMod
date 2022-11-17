@@ -1,0 +1,10 @@
+Thanks for installing my mod.
+Previous changes can be found here: https://github.com/maya-bee/BalanceMod/tree/main/changelogs
+
+v0.2.4 //
+
+- Added a new DeadSeaScrolls menu.
+    - You can now toggle changes in the DeadSeaScrolls menu.
+    - You can now view the credits in the DeadSeaScrolls menu.
+
+- Fixed a potential bug with R Key and how it handles if the player should receive full hearts of damage.

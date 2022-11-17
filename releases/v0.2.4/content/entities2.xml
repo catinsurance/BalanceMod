@@ -1,0 +1,14 @@
+<entities anm2root="gfx/" version="5">
+    <entity anm2path="1000.032_Lemon Mishap.anm2" baseHP="0" boss="0" champion="0" collisionDamage="6" collisionMass="0" collisionRadius="60" friction="1" id="1000" name="Lemon Mishap" numGridCollisionPoints="0" shadowSize="0" stageHP="0" variant="32">
+        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
+    </entity>
+    <entity anm2path="003.008_Abel.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="13" friction="1" id="3" name="Abel" numGridCollisionPoints="12" shadowSize="11" stageHP="0" tags="cansacrifice">
+        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
+    </entity>
+    <entity anm2path="003.100_milk.anm2" baseHP="0" boss="0" champion="0" id="3" collisionDamage="0" collisionMass="3" collisionRadius="13" friction="1" name="Milk! Familiar" numGridCollisionPoints="12" shadowSize="11" stageHP="0">
+        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
+    </entity>
+    <entity anm2path="1000.025_creep (white).anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" id="1000" name="Milk Creep" numGridCollisionPoints="0" shadowSize="0" stageHP="0" variant="46" subtype="549364164">
+        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
+    </entity>
+</entities>
