@@ -14,7 +14,7 @@ https://github.com/maya-bee/BalanceMod/tree/main/changelogs
 
 This mod is actively undergoing development by me (one person!). Join the Discord server below to help contribute ideas!
 
-v0.2.5
+v0.2.6
 
 Discord:
 https://discord.gg/bNhNkGa6QX
@@ -22,7 +22,7 @@ Github:
 https://github.com/maya-bee/BalanceMod
 Youtube:
 https://www.youtube.com/channel/UCG9FvihQ9Ab6YUatmp9yaBw</description>
-    <version>1.11</version>
+    <version>1.12</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
     <tag id="Items"/>
