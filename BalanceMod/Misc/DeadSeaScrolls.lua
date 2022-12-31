@@ -58,6 +58,11 @@ local ITEM_CHANGES = {
         Tooltip = "shorter cooldown"
     },
     {
+        Name = "clicker",
+        Id = Isaac.GetItemIdByName("Clicker"),
+        Tooltip = "clicker changes your character with a lot of new rules to make it fair"
+    },
+    {
         Name = "little baggy",
         Id = "LittleBaggyTweak",
         Tooltip = "little baggy identifies all pills on pickup"

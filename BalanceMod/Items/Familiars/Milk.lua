@@ -164,7 +164,7 @@ function Milk:CacheUpdate(player, cacheFlag)
         local data = player:GetData().MilkStatus
         if data then
             if data.HasBuff then
-                player.MaxFireDelay = player.MaxFireDelay - Milk.BonusFireRateInCreep
+                player.MaxFireDelay = math.max(player.MaxFireDelay - Milk.BonusFireRateInCreep, 0.2)
             end
         end
     end

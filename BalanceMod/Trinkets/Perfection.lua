@@ -12,6 +12,8 @@ local Perfection = {
     },
 }
 
+local TrinketHelper = require("BalanceMod.Utility.TrinketHelper")
+
 Perfection.Tiers = {
     [5] = Perfection.Trinkets.Perfection,
     [3] = Perfection.Trinkets.Excellence,
@@ -53,7 +55,7 @@ local function DropTrinket(playerRef, trinketType)
     player:TryRemoveTrinket(trinketType)
     local velocityX = math.random(-10, 10)
     local velocityY = math.random(-10, 10)
-    local trinket = Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TRINKET, trinketType, player.Position, Vector(velocityX, velocityY), playerRef.Entity)
+    local trinket = TrinketHelper:SpawnTrinket(trinketType, player.Position, Vector(velocityX, velocityY))
     trinket = trinket:ToPickup()
     trinket.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
     trinket.Timeout = 30
@@ -78,12 +80,18 @@ function Perfection:TakeDamage(entity, amount, flags)
             return
         end
 
-        local slotOne, slotTwo = player:GetTrinket(0), player:GetTrinket(1)
-        local tier = GetTrinketTier(slotOne) or GetTrinketTier(slotTwo)
+        local tier
+        for _, trinket in pairs(Perfection.Trinkets) do
+            if player:HasTrinket(trinket) then
+                tier = GetTrinketTier(trinket)
+                break
+            end
+        end
+
         if tier then
             SFXManager():Play(SoundEffect.SOUND_THUMBS_DOWN)
             DropTrinket(EntityRef(player), Perfection.Tiers[tier])
-
+            
             local nextTier = Perfection.Tiers[tier - 2]
             if nextTier then
                 player:AddTrinket(nextTier, true)
@@ -95,8 +103,8 @@ end
 ---@param entity EntityPickup
 function Perfection:PickupSpawned(entity)
     if entity.SubType == TrinketType.TRINKET_PERFECTION then
+        entity:GetData().SpawnedByBalanceMod = true
         entity:Morph(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TRINKET, Perfection.Trinkets.Perfection, true)
-
     end
 end
 
@@ -106,6 +114,17 @@ function Perfection:RunStart()
         pool:RemoveTrinket(trinket)
     end
 end
+
+TrinketHelper:AddShouldRemoveCallback(Perfection.Trinkets.Perfection, function (trinket)
+    -- make sure it was spawned by a boss
+    local perfectionDropped = Game():GetStateFlag(GameStateFlag.STATE_PERFECTION_SPAWNED)
+    return not (perfectionDropped and (trinket.SpawnerEntity and trinket.SpawnerEntity.Type ~= EntityType.ENTITY_PLAYER))
+end)
+
+TrinketHelper:RemoveOnSpawn(Perfection.Trinkets.Excellence)
+TrinketHelper:RemoveOnSpawn(Perfection.Trinkets.Mediocrity)
+TrinketHelper:RemoveOnSpawn(Perfection.Trinkets.Incompetence)
+TrinketHelper:RemoveOnSpawn(Perfection.Trinkets.Failure)
 
 -- /////////////////// --
 

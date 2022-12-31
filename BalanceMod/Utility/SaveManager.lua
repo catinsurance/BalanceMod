@@ -46,7 +46,7 @@ function SaveManager:Set(key, value)
         return
     end
 
-    SaveManager.Loaded[key] = value    
+    SaveManager.Loaded[key] = value
 end
 
 function SaveManager:Load()

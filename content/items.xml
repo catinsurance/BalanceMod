@@ -24,4 +24,38 @@
     <trinket description="Luck up. Last chance!" gfx="trinket_c04_cperfection.png" name="Mediocrity" tags="quest" cache="luck"/>
     <trinket description="Luck up. How disappointing!" gfx="trinket_c05_dperfection.png" name="Incompetence" tags="quest" cache="luck"/>
     <trinket description="Luck up. How embarrassing!" gfx="trinket_c06_fperfection.png" name="Failure" tags="quest" cache="luck"/>
+
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Magdalene" achievement="1"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Cain" achievement="2"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Judas" achievement="3"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Blue Baby" achievement="32"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Eve" achievement="42"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Samson" achievement="67"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Azazel" achievement="79"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Lazarus" achievement="80"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Eden" achievement="81"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Lost" achievement="82"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Lilith" achievement="199"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Keeper" achievement="251"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Apollyon" achievement="340"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Forgotten" achievement="390"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Bethany" achievement="404"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Jacob and Esau" achievement="405"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Isaac" achievement="474"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Magdalene" achievement="475"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Cain" achievement="476"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Judas" achievement="477"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Blue Baby" achievement="478"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Eve" achievement="479"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Samson" achievement="480"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Azazel" achievement="481"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Lazarus" achievement="482"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Eden" achievement="483"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Lost" achievement="484"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Lilith" achievement="485"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Keeper" achievement="486"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Apollyon" achievement="487"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Forgotten" achievement="488"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Bethany" achievement="489"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Jacob" achievement="490"/>
 </items>

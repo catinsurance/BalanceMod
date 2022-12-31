@@ -14,6 +14,7 @@ local ChargeBars = require("BalanceMod.Utility.ChargeBars")
 local SaveManager = require("BalanceMod.Utility.SaveManager")
 local GiantBookApi = require("BalanceMod.API.GiantBookApi")
 local PoolHelper = require("BalanceMod.Utility.PoolHelper")
+local TrinketHelper = require("BalanceMod.Utility.TrinketHelper")
 
 local disabledItems = {}
 local disabledTrinkets = {}
@@ -32,6 +33,7 @@ end
 
 SaveManager:Init(BalanceMod)
 GiantBookApi:Init(BalanceMod)
+TrinketHelper:Init(BalanceMod)
 
 BalanceMod:AddCallback(ModCallbacks.MC_POST_PICKUP_INIT, PoolHelper.PickupSpawned, PickupVariant.PICKUP_COLLECTIBLE)
 BalanceMod:AddCallback(ModCallbacks.MC_POST_RENDER, ChargeBars.UpdateAllCustomChargeBars)
@@ -68,6 +70,7 @@ include("BalanceMod.Items.Actives.HowToJump")(BalanceMod)
 items[#items + 1] = include("BalanceMod.Items.Actives.TheJar")(BalanceMod)
 items[#items + 1] = include("BalanceMod.Items.Familiars.Milk")(BalanceMod)
 items[#items + 1] = include("BalanceMod.Items.Actives.BottleOfPills")(BalanceMod)
+items[#items + 1] = include("BalanceMod.Items.Actives.Clicker")(BalanceMod)
 
 -- Load every trinket change
 
@@ -141,7 +144,9 @@ function BalanceMod:CorrectCharacter(player) -- this runs every player update so
                         end
                     end
                     if itemSlot then
-                        local activeCharge = player:GetActiveCharge(itemSlot)
+                        local itemConfig = Isaac.GetItemConfig():GetCollectible(item.OldItemId)
+                        local activeCharge = player:NeedsCharge(itemSlot) and player:GetActiveCharge(itemSlot) or itemConfig.MaxCharges
+
                         player:RemoveCollectible(item.NewItemId, false, itemSlot, false)
                         player:AddCollectible(item.OldItemId, activeCharge, false, itemSlot, 0)
                     else
@@ -159,8 +164,10 @@ function BalanceMod:CorrectCharacter(player) -- this runs every player update so
                         end
                     end
                     if itemSlot then
-                        local activeCharge = player:GetActiveCharge(itemSlot)
+                        local itemConfig = Isaac.GetItemConfig():GetCollectible(item.NewItemId)
+                        local activeCharge = player:NeedsCharge(itemSlot) and player:GetActiveCharge(itemSlot) or itemConfig.MaxCharges 
                         player:RemoveCollectible(item.OldItemId, false, itemSlot, false)
+                        
                         player:AddCollectible(item.NewItemId, activeCharge, false, itemSlot, 0)
                     else
                         player:RemoveCollectible(item.OldItemId, false, nil, false)

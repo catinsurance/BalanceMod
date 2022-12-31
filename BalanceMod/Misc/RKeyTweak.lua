@@ -39,7 +39,7 @@ function RKey:OnDamage(entity, amount, flags, _, countdown)
 end
 
 function RKey:GameStart(newGame)
-    if newGame then
+    if not newGame then
         SaveManager:Set("RKeyUsed", false)
     end
 end

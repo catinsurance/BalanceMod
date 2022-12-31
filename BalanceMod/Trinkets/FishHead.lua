@@ -27,6 +27,10 @@ function FishHead:OnEntityHurt(victim, _, flags, entityRef)
         for _ = 1, player:GetTrinketMultiplier(FishHead.Trinket) do
             Isaac.Spawn(EntityType.ENTITY_FAMILIAR, FamiliarVariant.BLUE_FLY, LocustSubtypes.LOCUST_OF_PESTILENCE, player.Position, Vector(0, 0), player)
         end
+    else
+        for _ = 1, player:GetTrinketMultiplier(FishHead.Trinket) do
+            Isaac.Spawn(EntityType.ENTITY_FAMILIAR, FamiliarVariant.BLUE_FLY, 0, player.Position, Vector(0, 0), player)
+        end
     end
 end
 
@@ -36,7 +40,7 @@ return function (BalanceMod)
     BalanceMod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, FishHead.OnEntityHurt, EntityType.ENTITY_PLAYER)
 
     if EID then
-        EID:addTrinket(FishHead.Trinket, "1/4 chance to spawn 1 Locust of Pestilence when Isaac takes damage#Locust deals double your damage and applies poison")
+        EID:addTrinket(FishHead.Trinket, "#75% chance to spawn a blue fly on hit#25% chance to spawn a Locust of Pestilence on hit")
     end
 
     return {
