@@ -4,7 +4,6 @@
 local SaveManager = require("BalanceMod.Utility.SaveManager")
 local PlayerTracker = require("BalanceMod.Utility.PlayerTracker")
 local TrinketHelper = require("BalanceMod.Utility.TrinketHelper")
-local Entity
 
 local Clicker = {
     Item = Isaac.GetItemIdByName("Clicker")
@@ -68,7 +67,6 @@ local CharacterTypes = {
     PlayerType.PLAYER_THEFORGOTTEN,
     PlayerType.PLAYER_BETHANY,
     PlayerType.PLAYER_JACOB,
-    PlayerType.PLAYER_ISAAC_B,
     PlayerType.PLAYER_MAGDALENE_B,
     PlayerType.PLAYER_CAIN_B,
     PlayerType.PLAYER_JUDAS_B,
@@ -105,11 +103,11 @@ local RedHeartCharacters = {
     PlayerType.PLAYER_APOLLYON,
     PlayerType.PLAYER_BETHANY,
     PlayerType.PLAYER_JACOB,
-    PlayerType.PLAYER_ISAAC_B,
     PlayerType.PLAYER_MAGDALENE_B,
     PlayerType.PLAYER_CAIN_B,
     PlayerType.PLAYER_EVE_B,
     PlayerType.PLAYER_SAMSON_B,
+    PlayerType.PLAYER_AZAZEL_B,
     PlayerType.PLAYER_EDEN_B,
     PlayerType.PLAYER_LILITH_B,
     PlayerType.PLAYER_APOLLYON_B,
@@ -141,10 +139,6 @@ local function GetIndexFromValue(table, value)
         end
     end
     return nil  
-end
-
-local function indexExists(table, index)
-    return table[index] ~= nil and table[index] or nil
 end
 
 local function countOneBits(int)
@@ -209,7 +203,7 @@ local function RandomCharacter(player, rng)
     local oldType = player:GetPlayerType()
 
     local num = rng:RandomInt(#CharacterTypes) + 1
-    local choice = indexExists(CharacterTypes, num)
+    local choice = CharacterTypes[num]
 
     if not choice then
         choice = player:GetPlayerType()
@@ -261,17 +255,6 @@ local function RandomCharacter(player, rng)
         }
     end
 
-    if isCoinHeartCharacter then
-
-        clickerData[playerIndex].LastRedHeartCharacter.SoulHearts = soulHearts
-        clickerData[playerIndex].LastRedHeartCharacter.BlackHearts = blackHearts
-
-        soulHearts = 0
-        blackHearts = 0
-        redHeartContainers = clamp(redHeartContainers, 4, 6)
-        redHearts = redHeartContainers
-    end
-
     if isSoulHeartCharacter and wasRedHeartCharacter then
         soulHearts = redHeartContainers + soulHearts
         redHearts = 0
@@ -281,56 +264,19 @@ local function RandomCharacter(player, rng)
 
     if isRedHeartCharacter and wasSoulHeartCharacter then
         -- restore red hearts
-        local soulAndBlackHearts = soulHearts + blackHearts
-        local oldHeartContainers = clickerData[playerIndex].LastRedHeartCharacter.RedHeartContainers
-
-        if oldHeartContainers > soulAndBlackHearts then
-            redHeartContainers = soulAndBlackHearts
-            redHearts = soulAndBlackHearts
-        else
-            redHeartContainers = oldHeartContainers
-            redHearts = oldHeartContainers
-            local leftoverSoulHearts = soulAndBlackHearts - oldHeartContainers
-            if leftoverSoulHearts > 0 then
-                -- prioritize black hearts
-                if leftoverSoulHearts > soulHearts then
-                    blackHearts = blackHearts + (leftoverSoulHearts - soulHearts)
-                    soulHearts = 0
-                else
-                    soulHearts = clamp(soulHearts - leftoverSoulHearts, 0, 99)
-                end
-            end
-        end
-
+        
+        redHeartContainers = clickerData[playerIndex].LastRedHeartCharacter.RedHeartContainers
         boneHearts = clickerData[playerIndex].LastRedHeartCharacter.BoneHearts
 
-        local leftoverSoulHearts = (redHeartContainers + boneHearts) - (soulHearts + blackHearts)
-
-        if leftoverSoulHearts > 0 then
-            if leftoverSoulHearts > soulHearts then
-                blackHearts = blackHearts + (leftoverSoulHearts - soulHearts)
-                soulHearts = 0
-            else
-                soulHearts = clamp(soulHearts - leftoverSoulHearts, 0, 99)
-            end
-        end
-
-        if (redHeartContainers + boneHearts) > (soulHearts + blackHearts) then
-            redHearts = soulHearts + blackHearts
-            soulHearts = 0
-            blackHearts = 0
-        else
-            redHearts = redHeartContainers + boneHearts
-            soulHearts = soulHearts - redHearts
-            blackHearts = blackHearts - redHearts
-            soulHearts = clamp(math.floor(soulHearts), 0, 99)
-            blackHearts = clamp(math.floor(blackHearts), 0, 99)
-        end
+        soulHearts = clickerData[playerIndex].LastRedHeartCharacter.SoulHearts
+        blackHearts = clickerData[playerIndex].LastRedHeartCharacter.BlackHearts
 
         rottenHearts = clickerData[playerIndex].LastRedHeartCharacter.RottenHearts
         goldenHearts = clickerData[playerIndex].LastRedHeartCharacter.GoldenHearts
         brokenHearts = clickerData[playerIndex].LastRedHeartCharacter.BrokenHearts
         eternalHearts = clickerData[playerIndex].LastRedHeartCharacter.EternalHearts
+
+        redHearts = clickerData[playerIndex].LastRedHeartCharacter.RedHearts + (boneHearts * 2)
     end
 
     if (wasNoHeartCharacter or wasCoinHeartCharacter) and not (isCoinHeartCharacter or isNoHeartCharacter) then
@@ -344,27 +290,18 @@ local function RandomCharacter(player, rng)
         soulHearts = clickerData[playerIndex].LastRedHeartCharacter.SoulHearts
         blackHearts = clickerData[playerIndex].LastRedHeartCharacter.BlackHearts
     end
-    
-    if isRedHeartCharacter then
-        clickerData[playerIndex].LastRedHeartCharacter = {
-            RedHearts = redHearts,
-            RedHeartContainers = redHeartContainers,
-            BoneHearts = boneHearts,
-            RottenHearts = rottenHearts,
-            GoldenHearts = goldenHearts,
-            BrokenHearts = brokenHearts,
-            EternalHearts = eternalHearts,
-            SoulHearts = soulHearts,
-            BlackHearts = blackHearts
-        }
-
-        print("storing red hearts")
-    end
 
     if isNoHeartCharacter or isCoinHeartCharacter then
 
         clickerData[playerIndex].LastRedHeartCharacter.SoulHearts = soulHearts
         clickerData[playerIndex].LastRedHeartCharacter.BlackHearts = blackHearts
+    end
+
+    if isCoinHeartCharacter then
+        -- round redHeartContainer to even 
+        redHeartContainers = clamp(redHeartContainers, 4, 6)
+        redHeartContainers = redHeartContainers + redHeartContainers % 2
+        redHearts = redHeartContainers
     end
 
     if player:GetPlayerType() == PlayerType.PLAYER_BETHANY_B then
@@ -378,16 +315,25 @@ local function RandomCharacter(player, rng)
     if player:GetPlayerType() == PlayerType.PLAYER_BETHANY then
         if redHeartContainers == 0 then
             redHeartContainers = 2
+            redHearts = 2
         end
 
         player:AddSoulCharge(soulHearts + blackHearts)
+    end
+
+    if player:GetPlayerType() == PlayerType.PLAYER_THELOST_B then
+        player:GetEffects():AddCollectibleEffect(CollectibleType.COLLECTIBLE_HOLY_MANTLE, false)
+    end
+
+    if player:GetPlayerType() == PlayerType.PLAYER_THELOST or player:GetPlayerType() == PlayerType.PLAYER_THELOST_B then
+        soulHearts = clamp(soulHearts - 1, 0, 99)
     end
 
     if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then
         local soulAndBlackHearts = soulHearts + blackHearts
         boneHearts = math.ceil((math.floor(soulAndBlackHearts / 2) + redHeartContainers) / 2)
         redHeartContainers = 0
-        redHearts = boneHearts
+        redHearts = boneHearts * 2
 
         blackHearts = math.floor(soulAndBlackHearts / 2)
         soulHearts = clamp(soulAndBlackHearts - blackHearts, 0, 99)
@@ -402,11 +348,25 @@ local function RandomCharacter(player, rng)
     end
 
     if oldType == PlayerType.PLAYER_BETHANY_B then
-        redHearts = player:GetBloodCharge() 
+        redHearts = redHearts + player:GetBloodCharge() 
     end
 
     if oldType == PlayerType.PLAYER_BETHANY then
-        soulHearts = player:GetSoulCharge()
+        soulHearts = soulHearts + player:GetSoulCharge()
+    end
+
+    if isRedHeartCharacter then
+        clickerData[playerIndex].LastRedHeartCharacter = {
+            RedHearts = redHearts,
+            RedHeartContainers = redHeartContainers,
+            BoneHearts = boneHearts,
+            RottenHearts = rottenHearts,
+            GoldenHearts = goldenHearts,
+            BrokenHearts = brokenHearts,
+            EternalHearts = eternalHearts,
+            SoulHearts = soulHearts,
+            BlackHearts = blackHearts
+        }
     end
 
     removeHp(player)
@@ -425,7 +385,6 @@ local function RandomCharacter(player, rng)
         player:AddBlackHearts(blackHearts)
     end
 
-    print(choice)
     print("redHeartContainers", redHeartContainers, "redHearts", redHearts, "boneHearts", boneHearts, "rottenHearts", rottenHearts, "goldenHearts", goldenHearts, "brokenHearts", brokenHearts, "soulHearts", soulHearts, "blackHearts", blackHearts, "eternalHearts", eternalHearts)
 end
 

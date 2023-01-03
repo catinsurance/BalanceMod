@@ -85,7 +85,8 @@ function Abel:OnUpdate(familiar)
     local pickups = Isaac.FindInRadius(familiar.Position, 5, EntityPartition.PICKUP)
     if #pickups > 0 then
         for _, pickupEntity in ipairs(pickups) do
-            if pickupEntity.Variant ~= PickupVariant.PICKUP_COLLECTIBLE then
+            pickupEntity = pickupEntity:ToPickup()
+            if pickupEntity.Variant ~= PickupVariant.PICKUP_COLLECTIBLE and pickupEntity.Price == 0 then
                 local pickup = pickupEntity:ToPickup()
                 
                 if Abel.ChestPickup[pickup.Variant] then
