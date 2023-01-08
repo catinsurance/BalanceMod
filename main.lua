@@ -72,6 +72,7 @@ items[#items + 1] = include("BalanceMod.Items.Familiars.Milk")(BalanceMod)
 items[#items + 1] = include("BalanceMod.Items.Actives.BottleOfPills")(BalanceMod)
 items[#items + 1] = include("BalanceMod.Items.Actives.Clicker")(BalanceMod)
 include("BalanceMod.Items.Actives.YuckHeart")(BalanceMod)
+include("BalanceMod.Items.Familiars.ObsessedFan")(BalanceMod)
 
 -- Load every trinket change
 
