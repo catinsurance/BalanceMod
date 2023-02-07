@@ -10,8 +10,8 @@ v0.3.0 //
 - Car battery no longer has any interaction with Clicker.
 - Clicker will convert soul hearts into red hearts for red heart characters if you previously used Clicker to transform from a red heart character into a soul heart character.
 - Transforming into Tainted Lost with Clicker grants a one-time Holy Mantle effect.
-- Transforming from Tainted Bethany into a red heart character with Clicker will heal you by the amount of stored red hearts.
-- Transforming from Bethany into a character that can have soul hearts with Clicker will convert any stored soul hearts into soul hearts. 
+- Transforming from Tainted Bethany into a red heart character with Clicker will convert any blood charge into red hearts.
+- Transforming from Bethany into a character that can have soul hearts with Clicker will convert any soul charge into soul hearts. Black hearts will be restored from the last time you had them.
 - Clicker can no longer be used to transform in Tarnished Isaac.
 
 - If the player has only Rotten Hearts or not red heart containers at all, Yuck Heart will give 7 Blue Flies on use.
