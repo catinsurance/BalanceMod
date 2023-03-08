@@ -1,7 +1,6 @@
 ---@diagnostic disable: param-type-mismatch
 -- oh boy, here we go
 
-local SaveManager = require("BalanceMod.Utility.SaveManager")
 local PlayerTracker = require("BalanceMod.Utility.PlayerTracker")
 local TrinketHelper = require("BalanceMod.Utility.TrinketHelper")
 
@@ -198,11 +197,17 @@ local debugWasNext = 1
 local function RandomCharacter(player, rng)
 
     local playerIndex = PlayerTracker:GetPlayerIndex(player)
-    local clickerData = SaveManager.Loaded.Clicker
+    local save = BalanceMod.GetRunPersistentSave()
+
+    if not save then
+        return
+    end
+
+    local clickerData = save.Clicker
 
     if not clickerData then
         clickerData = {}
-        SaveManager.Loaded.Clicker = clickerData
+        save.Clicker = clickerData
     end
 
     if not clickerData[playerIndex] then
@@ -441,7 +446,7 @@ end
 function Clicker:CharacterUnlockedChecker(bool)
 
     if not bool then
-        SaveManager.Loaded.Clicker = {}
+        BalanceMod.GetRunPersistentSave().Clicker = {}
     end
 
     local pool = Game():GetItemPool()
@@ -462,17 +467,14 @@ function Clicker:OnUse(collectible, rng, player, useflags)
     return true
 end
 
-return function (BalanceMod)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, Clicker.CharacterUnlockedChecker)
+BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, Clicker.OnUse, Clicker.Item)
 
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, Clicker.CharacterUnlockedChecker)
-    BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, Clicker.OnUse, Clicker.Item)
-
-    if EID then
-        EID:addCollectible(Clicker.Item, "#Rerolls your character into another character#Cannot reroll normal characters into tainted and vice versa#{{Warning}} Red hearts will turn into soul hearts if the new character cannot have red hearts")
-    end
-
-    return {
-        OldItemId = CollectibleType.COLLECTIBLE_CLICKER,
-        NewItemId = Clicker.Item,
-    }
+if EID then
+    EID:addCollectible(Clicker.Item, "#Rerolls your character into another character#Cannot reroll normal characters into tainted and vice versa#{{Warning}} Red hearts will turn into soul hearts if the new character cannot have red hearts")
 end
+
+return {
+    OldItemId = CollectibleType.COLLECTIBLE_CLICKER,
+    NewItemId = Clicker.Item,
+}

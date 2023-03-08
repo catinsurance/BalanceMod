@@ -39,8 +39,7 @@ end
 
 -- /////////////////// --
 
-return function (BalanceMod)
-    BalanceMod:AddCallback(ModCallbacks.MC_NPC_UPDATE, Nazar.OnNPCSpawn)
-    if not EID then return end
+BalanceMod:AddCallback(ModCallbacks.MC_NPC_UPDATE, Nazar.OnNPCSpawn)
+if EID then
     EID:addTrinket(Nazar.Trinket, "Turns all champions into their non-champion variant#Converted enemies will not drop champion loot")
 end

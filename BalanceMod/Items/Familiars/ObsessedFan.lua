@@ -14,11 +14,9 @@ function ObsessedFan:FamiliarCollision(familiar, collider)
     end
 end
 
-return function (BalanceMod)
-    BalanceMod:AddCallback(ModCallbacks.MC_PRE_FAMILIAR_COLLISION, ObsessedFan.FamiliarCollision, ObsessedFan.Familiar)
+BalanceMod:AddCallback(ModCallbacks.MC_PRE_FAMILIAR_COLLISION, ObsessedFan.FamiliarCollision, ObsessedFan.Familiar)
 
-    if not EID then return false end
-    EID:addCollectible(ObsessedFan.Item, "Follows Isaac's movement with a 0.66 second delay#Blocks projectiles")
+if not EID then return false end
+EID:addCollectible(ObsessedFan.Item, "Follows Isaac's movement with a 0.66 second delay#Blocks projectiles")
 
-    return false
-end
+return false

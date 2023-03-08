@@ -7,7 +7,7 @@ local YuckHeart = {
 
 ---@param player EntityPlayer
 function YuckHeart:Use(_, _, player)
-    print(player:GetRottenHearts())
+
     if player:GetRottenHearts() * 2 == player:GetMaxHearts() or player:GetMaxHearts() == 0 then
         player:AddBlueFlies(YuckHeart.FlyCount, player.Position, player)
     end

@@ -6,13 +6,10 @@ local Chad = {
     Chance = 1/2,
 }
 
-local SaveManager = require("BalanceMod.Utility.SaveManager")
-
 ---@param itemPedestal EntityPickup
 function Chad:NewItemPedestal(itemPedestal)
     if itemPedestal.FrameCount ~= 1 then return end
-    if not SaveManager:Get("DSS") then return end
-    if not SaveManager:Get("DSS").ChadTweak then return end
+    if not BalanceMod.IsSettingEnabled("ChadTweak") then return end
 
     local rng = RNG()
     rng:SetSeed(Game():GetSeeds():GetStartSeed(), PoolHelper.ShiftIndex)
@@ -28,6 +25,4 @@ end
 
 -- /////////////////// --
 
-return function (BalanceMod)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, Chad.NewItemPedestal, PickupVariant.PICKUP_COLLECTIBLE)
-end
+BalanceMod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, Chad.NewItemPedestal, PickupVariant.PICKUP_COLLECTIBLE)

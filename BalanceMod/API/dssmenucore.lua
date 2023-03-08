@@ -1167,6 +1167,14 @@ return function(DSSModName, DSSCoreVersion, MenuProvider)
 
             allnosel = true
             for i, button in ipairs(buttons) do
+                if button.originalnosel == nil then
+                    if button.nosel == nil then
+                        button.originalnosel = false
+                    else
+                        button.originalnosel = button.nosel
+                    end
+                end
+
                 button.selected = false
                 if button.generate and itemswitched then
                     button.generate(button, item, tbl)
@@ -1181,7 +1189,7 @@ return function(DSSModName, DSSCoreVersion, MenuProvider)
                         button.nosel = true
                         button.forcenodisplay = true
                     elseif button.forcenodisplay then
-                        button.nosel = nil
+                        button.nosel = button.originalnosel
                         button.forcenodisplay = nil
                     end
                 end
@@ -2550,9 +2558,10 @@ return function(DSSModName, DSSCoreVersion, MenuProvider)
         function dssmenu.IsMenuSafe()
             local roomHasDanger = false
             for _, entity in pairs(Isaac.GetRoomEntities()) do
-                if (entity:IsActiveEnemy() and not entity:HasEntityFlags(EntityFlag.FLAG_FRIENDLY))
-                    or entity.Type == EntityType.ENTITY_PROJECTILE and entity:ToProjectile().ProjectileFlags & ProjectileFlags.CANT_HIT_PLAYER == 0
-                    or entity.Type == EntityType.ENTITY_BOMBDROP then
+                if (entity:IsActiveEnemy() and not entity:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) and not entity:GetData().DSSMenuSafe)
+                or entity.Type == EntityType.ENTITY_PROJECTILE and entity:ToProjectile().ProjectileFlags & ProjectileFlags.CANT_HIT_PLAYER == 0
+                or entity.Type == EntityType.ENTITY_BOMBDROP
+                then
                     roomHasDanger = true
                     break
                 end
@@ -3108,7 +3117,7 @@ return function(DSSModName, DSSCoreVersion, MenuProvider)
 
         dssmenu.AddMenu("Menu", { Run = dssmod.runMenu, Open = dssmod.openMenu, Close = dssmod.closeMenu, Directory = dssdirectory, DirectoryKey = dssdirectorykey })
 
-        _G.DeadSeaScrollsMenu = dssmenu
+        DeadSeaScrollsMenu = dssmenu
     end
 
     if not dssmenu or (dssmenu.CoreVersion < DSSCoreVersion) then
@@ -3120,7 +3129,7 @@ return function(DSSModName, DSSCoreVersion, MenuProvider)
 
         dssmenu.CoreVersion = DSSCoreVersion
         dssmenu.CoreMod = DSSModName
-        _G.DeadSeaScrollsMenu = dssmenu
+        DeadSeaScrollsMenu = dssmenu
     end
 
     function MenuProvider.IsMenuCore()

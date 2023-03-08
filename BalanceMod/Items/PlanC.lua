@@ -1,5 +1,4 @@
 local PlayerTracker = require("BalanceMod.Utility.PlayerTracker")
-local SaveManager = require("BalanceMod.Utility.SaveManager")
 
 -- // Plan C // --
 
@@ -9,7 +8,13 @@ local PlanC = {
 }
 
 function PlanC:NewRoom()
-    local playersToKill = SaveManager:Get("PlanC")
+    local save = BalanceMod.GetRunPersistentSave()
+
+    if not save then
+        return
+    end
+
+    local playersToKill = save.PlanC
 
     if playersToKill == nil then
         return -- no players to kill
@@ -21,7 +26,7 @@ function PlanC:NewRoom()
            player:Kill()
            playersToKill[playerIndex] = nil
 
-           SaveManager:Set("PlanC", PlanC.PlayersToKill)
+            save.PlanC = playersToKill
         end
     end
 end
@@ -45,7 +50,7 @@ function PlanC:OnUse(_, _, player)
         end
 
         PlanC.PlayersToKill[PlayerTracker:GetPlayerIndex(player)] = true
-        SaveManager:Set("PlanC", PlanC.PlayersToKill)
+        BalanceMod.GetRunPersistentSave().PlanC = PlanC.PlayersToKill
 
         return {
             Remove = true,
@@ -60,16 +65,14 @@ end
 
 -- /////////////////// --
 
-return function (BalanceMod)
-    BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, PlanC.OnUse, PlanC.Item)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, PlanC.NewRoom)
-    if EID then
-        EID:addCollectible(PlanC.Item, "Kills all enemies in the room#Kills the player upon entering the next room#Consumed on use")
-        
-    end
+BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, PlanC.OnUse, PlanC.Item)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, PlanC.NewRoom)
+if EID then
+    EID:addCollectible(PlanC.Item, "Kills all enemies in the room#Kills the player upon entering the next room#Consumed on use")
 
-    return {
-        OldItemId = CollectibleType.COLLECTIBLE_PLAN_C,
-        NewItemId = PlanC.Item,
-    }
 end
+
+return {
+    OldItemId = CollectibleType.COLLECTIBLE_PLAN_C,
+    NewItemId = PlanC.Item,
+}

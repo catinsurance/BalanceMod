@@ -30,8 +30,6 @@ local HealthTweaks = {
     }
 }
 
-local SaveManager = require("BalanceMod.Utility.SaveManager")
-
 local ChampionAdjusters = {
     [ChampionColor.RED] = 2.6,
     [ChampionColor.YELLOW] = 1.5,
@@ -46,7 +44,7 @@ local ChampionAdjusters = {
 function HealthTweaks:NPCUpdate(entity)
     if entity.FrameCount == 1 then
         local entityTweaked = HealthTweaks.Tweaks[entity.Type]
-        if entityTweaked and SaveManager:Get("DSS") and SaveManager:Get("DSS")["Health-" .. tostring(entityTweaked)] then
+        if entityTweaked and BalanceMod.IsSettingEnabled("Health-" .. tostring(entityTweaked)) then
             
             local subTypeTweaked = entityTweaked[entity.SubType]
             if subTypeTweaked then

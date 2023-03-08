@@ -1,8 +1,9 @@
--- Made by Maya (https://github.com/maya-bee)
+-- Made by Slugcat (https://github.com/maya-bee)
 
 -- // Variables // --
 
-local BalanceMod = RegisterMod("Balance Mod", 1)
+-- ITS A GLOBA NOW WAHAAAAT
+_G.BalanceMod = RegisterMod("Balance Mod", 1)
 
 BalanceMod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, function() -- run this first as its really important
     if #Isaac.FindByType(EntityType.ENTITY_PLAYER) == 0 then
@@ -10,11 +11,11 @@ BalanceMod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, function() -- run this 
     end
 end)
 
-local ChargeBars = require("BalanceMod.Utility.ChargeBars")
-local SaveManager = require("BalanceMod.Utility.SaveManager")
-local GiantBookApi = require("BalanceMod.API.GiantBookApi")
-local PoolHelper = require("BalanceMod.Utility.PoolHelper")
-local TrinketHelper = require("BalanceMod.Utility.TrinketHelper")
+include("BalanceMod.Utility.SaveManager")
+
+BalanceMod.Chargebars = include("BalanceMod.Utility.ChargeBars")
+BalanceMod.PoolHelper = include("BalanceMod.Utility.PoolHelper")
+BalanceMod.TrinketHelper = include("BalanceMod.Utility.TrinketHelper")
 
 local disabledItems = {}
 local disabledTrinkets = {}
@@ -31,14 +32,9 @@ end
 
 -- // Initialization // --
 
-SaveManager:Init(BalanceMod)
-GiantBookApi:Init(BalanceMod)
-TrinketHelper:Init(BalanceMod)
 
-BalanceMod:AddCallback(ModCallbacks.MC_POST_PICKUP_INIT, PoolHelper.PickupSpawned, PickupVariant.PICKUP_COLLECTIBLE)
-BalanceMod:AddCallback(ModCallbacks.MC_POST_RENDER, ChargeBars.UpdateAllCustomChargeBars)
-
-SaveManager:Load()
+BalanceMod:AddCallback(ModCallbacks.MC_POST_PICKUP_INIT, BalanceMod.PoolHelper.PickupSpawned, PickupVariant.PICKUP_COLLECTIBLE)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_RENDER, BalanceMod.Chargebars.UpdateAllCustomChargeBars)
 
 -- Load every item change
 
@@ -55,48 +51,48 @@ local trinkets = {}
 
 ]]
 
-items[#items + 1] = include("BalanceMod.Items.Dataminer")(BalanceMod)
-include("BalanceMod.Items.BreathOfLife")(BalanceMod)
-items[#items + 1] = include("BalanceMod.Items.PlanC")(BalanceMod)
-items[#items + 1] = include("BalanceMod.Items.MomsPad")(BalanceMod)
-include("BalanceMod.Items.LemonMishap")(BalanceMod)
-items[#items + 1] = include("BalanceMod.Items.D10")(BalanceMod)
-include("BalanceMod.Items.BlackBean")(BalanceMod)
-items[#items + 1] = include("BalanceMod.Items.RazorBlade")(BalanceMod)
-items[#items + 1] = include("BalanceMod.Items.Abel")(BalanceMod)
-include("BalanceMod.Items.DeadBird")(BalanceMod)
-include("BalanceMod.Items.CarrotJuice")(BalanceMod)
-include("BalanceMod.Items.Actives.HowToJump")(BalanceMod)
-items[#items + 1] = include("BalanceMod.Items.Actives.TheJar")(BalanceMod)
-items[#items + 1] = include("BalanceMod.Items.Familiars.Milk")(BalanceMod)
-items[#items + 1] = include("BalanceMod.Items.Actives.BottleOfPills")(BalanceMod)
-items[#items + 1] = include("BalanceMod.Items.Actives.Clicker")(BalanceMod)
-include("BalanceMod.Items.Actives.YuckHeart")(BalanceMod)
-include("BalanceMod.Items.Familiars.ObsessedFan")(BalanceMod)
+items[#items + 1] = include("BalanceMod.Items.Dataminer")
+include("BalanceMod.Items.BreathOfLife")
+items[#items + 1] = include("BalanceMod.Items.PlanC")
+items[#items + 1] = include("BalanceMod.Items.MomsPad")
+include("BalanceMod.Items.LemonMishap")
+items[#items + 1] = include("BalanceMod.Items.D10")
+include("BalanceMod.Items.BlackBean")
+items[#items + 1] = include("BalanceMod.Items.RazorBlade")
+items[#items + 1] = include("BalanceMod.Items.Abel")
+include("BalanceMod.Items.DeadBird")
+include("BalanceMod.Items.CarrotJuice")
+include("BalanceMod.Items.Actives.HowToJump")
+items[#items + 1] = include("BalanceMod.Items.Actives.TheJar")
+items[#items + 1] = include("BalanceMod.Items.Familiars.Milk")
+items[#items + 1] = include("BalanceMod.Items.Actives.BottleOfPills")
+items[#items + 1] = include("BalanceMod.Items.Actives.Clicker")
+include("BalanceMod.Items.Actives.YuckHeart")
+include("BalanceMod.Items.Familiars.ObsessedFan")
 
 -- Load every trinket change
 
-include("BalanceMod.Trinkets.Nazar")(BalanceMod)
-trinkets[#trinkets + 1] = include("BalanceMod.Trinkets.FishHead")(BalanceMod)
-trinkets[#trinkets + 1] = include("BalanceMod.Trinkets.Perfection")(BalanceMod)
+include("BalanceMod.Trinkets.Nazar")
+trinkets[#trinkets + 1] = include("BalanceMod.Trinkets.FishHead")
+trinkets[#trinkets + 1] = include("BalanceMod.Trinkets.Perfection")
 
 -- Load every enemy change
 
-include("BalanceMod.NPCs.MomsHand")(BalanceMod)
-include("BalanceMod.NPCs.HealthChanges")(BalanceMod)
+include("BalanceMod.NPCs.MomsHand")
+include("BalanceMod.NPCs.HealthChanges")
 
 -- Load every misc change
 
-include("BalanceMod.Misc.ItemQualityTweaks")(BalanceMod)
-include("BalanceMod.Misc.ChadItem")(BalanceMod)
-include("BalanceMod.Misc.GishItem")(BalanceMod)
-include("BalanceMod.Misc.CursedEyeLowerKnockback")(BalanceMod)
-include("BalanceMod.Misc.RKeyTweak")(BalanceMod)
-include("BalanceMod.Misc.PillBaggyTweak")(BalanceMod)
-include("BalanceMod.Misc.ThunderThighsTweak")(BalanceMod)
+include("BalanceMod.Misc.ItemQualityTweaks")
+include("BalanceMod.Misc.ChadItem")
+include("BalanceMod.Misc.GishItem")
+include("BalanceMod.Misc.CursedEyeLowerKnockback")
+include("BalanceMod.Misc.RKeyTweak")
+include("BalanceMod.Misc.PillBaggyTweak")
+include("BalanceMod.Misc.ThunderThighsTweak")
 
 -- Load dss
-include("BalanceMod.Misc.DeadSeaScrolls")()
+include("BalanceMod.Misc.DeadSeaScrolls")
 
 -- //////////////////// --
 
@@ -130,13 +126,28 @@ function BalanceMod:PickupInit(pickup)
     end
 end
 
+local function getIndexFromItemId(itemId)
+    for _, item in ipairs(BalanceMod.SETTING_INFO.ITEM_CHANGES) do
+        if item.Id == itemId then
+            return item.Index
+        end
+    end
+
+    for _, item in ipairs(BalanceMod.SETTING_INFO.TRINKET_CHANGES) do
+        if item.Id == itemId then
+            return item.Index
+        end
+    end
+end
+
 ---@param player EntityPlayer
 function BalanceMod:CorrectCharacter(player) -- this runs every player update so that mods that change the player's items don't break
-    if not SaveManager:IsInitialized() then return end
+    if not BalanceMod.IsDataLoaded() then return end
 
     for _, item in ipairs(items) do
         if item then
-            if SaveManager:Get("DSS") and not SaveManager:Get("DSS")[tostring(item.NewItemId)] then
+            local index = getIndexFromItemId(item.NewItemId)
+            if index and not BalanceMod.IsSettingEnabled(tostring(index)) then
                 if player:HasCollectible(item.NewItemId, false) then
                     local itemSlot
                     for i = ActiveSlot.SLOT_PRIMARY, ActiveSlot.SLOT_POCKET2 do
@@ -167,7 +178,7 @@ function BalanceMod:CorrectCharacter(player) -- this runs every player update so
                     end
                     if itemSlot then
                         local itemConfig = Isaac.GetItemConfig():GetCollectible(item.NewItemId)
-                        local activeCharge = player:NeedsCharge(itemSlot) and player:GetActiveCharge(itemSlot) or itemConfig.MaxCharges 
+                        local activeCharge = player:NeedsCharge(itemSlot) and player:GetActiveCharge(itemSlot) or itemConfig.MaxCharges
                         player:RemoveCollectible(item.OldItemId, false, itemSlot, false)
                         
                         player:AddCollectible(item.NewItemId, activeCharge, false, itemSlot, 0)
@@ -182,13 +193,13 @@ function BalanceMod:CorrectCharacter(player) -- this runs every player update so
 
     for _, trinket in ipairs(trinkets) do
         if trinket then
-            if SaveManager:Get("DSS") and not SaveManager:Get("DSS")["trinket-" .. tostring(trinket.NewItemId)] then
+            local index = getIndexFromItemId(trinket.NewItemId)
+            if index and not BalanceMod.IsSettingEnabled(tostring(index)) then
                 if player:HasTrinket(trinket.NewItemId, true) then
                     player:TryRemoveTrinket(trinket.NewItemId)
                     player:AddTrinket(trinket.OldItemId, false)
                 end
             else
-
                 if player:HasTrinket(trinket.OldItemId, true) then
                     player:TryRemoveTrinket(trinket.OldItemId)
                     player:AddTrinket(trinket.NewItemId, false)
@@ -200,11 +211,8 @@ end
 
 -- //////////////////// --
 
--- // Save Handler // --
+-- // Hook Callbacks // --
 
-BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, SaveManager.Load)
-BalanceMod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, SaveManager.Flush)
-BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_END, SaveManager.Flush)
 BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, BalanceMod.OnGameStart)
 BalanceMod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, BalanceMod.CorrectCharacter, 0) -- 0 = normal player variant
 BalanceMod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, BalanceMod.PickupInit, PickupVariant.PICKUP_TRINKET)

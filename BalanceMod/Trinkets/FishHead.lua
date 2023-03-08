@@ -25,26 +25,26 @@ function FishHead:OnEntityHurt(victim, _, flags, entityRef)
     local chance = rng:RandomFloat()
     if chance < FishHead.Chance then
         for _ = 1, player:GetTrinketMultiplier(FishHead.Trinket) do
-            Isaac.Spawn(EntityType.ENTITY_FAMILIAR, FamiliarVariant.BLUE_FLY, LocustSubtypes.LOCUST_OF_PESTILENCE, player.Position, Vector(0, 0), player)
+            local fly = Isaac.Spawn(EntityType.ENTITY_FAMILIAR, FamiliarVariant.BLUE_FLY, LocustSubtypes.LOCUST_OF_PESTILENCE, player.Position, Vector(0, 0), player)
+            fly:ClearEntityFlags(EntityFlag.FLAG_APPEAR)
         end
     else
         for _ = 1, player:GetTrinketMultiplier(FishHead.Trinket) do
-            Isaac.Spawn(EntityType.ENTITY_FAMILIAR, FamiliarVariant.BLUE_FLY, 0, player.Position, Vector(0, 0), player)
+            local fly = Isaac.Spawn(EntityType.ENTITY_FAMILIAR, FamiliarVariant.BLUE_FLY, 0, player.Position, Vector(0, 0), player)
+            fly:ClearEntityFlags(EntityFlag.FLAG_APPEAR)
         end
     end
 end
 
 -- /////////////////// --
 
-return function (BalanceMod)
-    BalanceMod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, FishHead.OnEntityHurt, EntityType.ENTITY_PLAYER)
+BalanceMod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, FishHead.OnEntityHurt, EntityType.ENTITY_PLAYER)
 
-    if EID then
-        EID:addTrinket(FishHead.Trinket, "#75% chance to spawn a blue fly on hit#25% chance to spawn a Locust of Pestilence on hit")
-    end
-
-    return {
-        OldItemId = TrinketType.TRINKET_FISH_HEAD,
-        NewItemId = FishHead.Trinket,
-    }
+if EID then
+    EID:addTrinket(FishHead.Trinket, "#75% chance to spawn a blue fly on hit#25% chance to spawn a Locust of Pestilence on hit")
 end
+
+return {
+    OldItemId = TrinketType.TRINKET_FISH_HEAD,
+    NewItemId = FishHead.Trinket,
+}

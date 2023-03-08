@@ -186,21 +186,19 @@ function Milk:Cleanup()
     end
 end
 
-return function (BalanceMod)
-    BalanceMod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, Milk.FamiliarUpdate, Milk.Familiar)
-    BalanceMod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, Milk.EntityDamage)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, Milk.EffectUpdate, EffectVariant.PLAYER_CREEP_RED)
-    BalanceMod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Milk.CacheUpdate)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, Milk.Cleanup)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, Milk.Cleanup)
-    BalanceMod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, Milk.Cleanup)
+BalanceMod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, Milk.FamiliarUpdate, Milk.Familiar)
+BalanceMod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, Milk.EntityDamage)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, Milk.EffectUpdate, EffectVariant.PLAYER_CREEP_RED)
+BalanceMod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Milk.CacheUpdate)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, Milk.Cleanup)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, Milk.Cleanup)
+BalanceMod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, Milk.Cleanup)
 
-    if EID then
-        EID:addCollectible(Milk.Item, "#Gives Isaac a familiar that drops milk when he takes damage for the first time in a room#Standing in the milk increases fire rate by +6")
-    end
-
-    return {
-        OldItemId = CollectibleType.COLLECTIBLE_MILK,
-        NewItemId = Milk.Item,
-    }
+if EID then
+    EID:addCollectible(Milk.Item, "#Gives Isaac a familiar that drops milk when he takes damage for the first time in a room#Standing in the milk increases fire rate by +6")
 end
+
+return {
+    OldItemId = CollectibleType.COLLECTIBLE_MILK,
+    NewItemId = Milk.Item,
+}

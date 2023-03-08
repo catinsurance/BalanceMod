@@ -1,85 +1,100 @@
 local DSSModName = "Dead Sea Scrolls (BalanceMod)"
 local DSSCoreVersion = 7
 local MenuProvider = {}
-local SaveManager = require("BalanceMod.Utility.SaveManager")
-local saveData = {}
 
 -- Below are some constant elements that we can reuse throughout the menu
 local BREAK_LINE = {str = '', fsize = 1, nosel = true}
 local ITEM_CHANGES = {
     {
         Name = "plan c",
+        Index = "PlanC",
         Id = Isaac.GetItemIdByName("Plan C"),
         Tooltip = "plan c will kill you after you leave the room instead of after 3 seconds"
     },
     {
         Name = "d10",
+        Index = "D10",
         Id = Isaac.GetItemIdByName("D10"),
         Tooltip = "d10 will devolve champions"
     },
     {
         Name = "breath of life",
+        Index = "BreathOfLife",
         Id = Isaac.GetItemIdByName("Breath of Life"),
         Tooltip = "breath of life takes less time to use"
     },
     {
         Name = "dataminer",
+        Index = "Dataminer",
         Id = Isaac.GetItemIdByName("Dataminer"),
         Tooltip = "gives temporary tears and damage instead of shuffling stats"
     },
     {
         Name = "mom's pad",
+        Index = "MomsPad",
         Id = Isaac.GetItemIdByName("Mom's Pad"),
         Tooltip = "marks enemies instead of fearing them"
     },
     {
         Name = "milk!",
+        Index = "Milk",
         Id = Isaac.GetItemIdByName("Milk!"),
         Tooltip = "massive tears up while standing in the milk creep"
     },
     {
         Name = "abel",
+        Index = "Abel",
         Id = Isaac.GetItemIdByName("Abel"),
         Tooltip = "collects pickups for you and auto aims towards enemies"
     },
     {
         Name = "razor blade",
+        Index = "RazorBlade",
         Id = Isaac.GetItemIdByName("Razor Blade"),
         Tooltip = "better damage on use"
     },
     {
         Name = "the jar",
+        Index = "TheJar",
         Id = Isaac.GetItemIdByName("The Jar"),
         Tooltip = "blocks a single hit when filled, empties afterward"
     },
     {
         Name = "mom's bottle of pills",
+        Index = "BottleOfPills",
         Id = Isaac.GetItemIdByName("Mom's Bottle of Pills"),
         Tooltip = "shorter cooldown"
     },
     {
         Name = "clicker",
+        Index = "Clicker",
         Id = Isaac.GetItemIdByName("Clicker"),
+        Tooltip = "clicker changes your character, but follows a lot of new rules to make it fair and less glitchy"
+    },
+    {
+        Name = "yuck heart",
+        Index = "YuckHeart",
+        Id = Isaac.GetItemIdByName("Yuck Heart"),
         Tooltip = "clicker changes your character with a lot of new rules to make it fair"
     },
     {
         Name = "little baggy",
-        Id = "LittleBaggyTweak",
+        Index = "LittleBaggyTweak",
         Tooltip = "little baggy identifies all pills on pickup"
     },
     {
         Name = "cursed eye",
-        Id = "CursedEyeTweak",
+        Index = "CursedEyeTweak",
         Tooltip = "having cursed eye lowers your knockback significantly"
     },
     {
         Name = "r key",
-        Id = "RKeyTweak",
+        Index = "RKeyTweak",
         Tooltip = "using r key makes you take full hearts of damage instead of half"
     },
     {
         Name = "thunder thighs",
-        Id = "ThunderThighs",
+        Index = "ThunderThighs",
         Tooltip = "thunder thighs gives -0.3 speed instead of -0.4"
     }
 }
@@ -138,11 +153,13 @@ local ENEMY_CHANGES = {
 local TRINKET_CHANGES = {
     {
         Name = "perfection",
+        Index = "Perfection",
         Id = Isaac.GetTrinketIdByName("Perfection"),
         Tooltip = "perfection will drop in \"tier\" and will disappear after tier 3"
     },
     {
         Name = "fish head",
+        Index = "FishHead",
         Id = Isaac.GetTrinketIdByName("Fish Head"),
         Tooltip = "fish head has a chance to give a poison locust on hit"
     }
@@ -169,114 +186,95 @@ local function GenerateTooltip(str)
     return {strset = endTable}
 end
 
-function MenuProvider.LoadSaveData()
-    saveData = SaveManager:Get("DSS") or {}
-
-    for _, item in ipairs(ITEM_CHANGES) do
-        local key = tostring(item.Id)
-        if saveData[key] == nil then
-            saveData[key] = true
-            
-        end
-    end
-
-    for _, enemy in ipairs(ENEMY_CHANGES) do
-        local key = enemy.Change
-        if saveData[key] == nil then
-            saveData[key] = true
-        end
-    end
-
-    for _, item in ipairs(TWEAKS) do
-        if saveData[item.Change] == nil then
-            saveData[item.Change] = true
-        end
-    end
-
-    for _, item in ipairs(TRINKET_CHANGES) do
-        local key = tostring(item.Id)
-        local val = saveData[key]
-        if val == nil then
-            saveData[key] = true
-            
-        end
-    end
-end
-
 -- The below functions are all required 
 function MenuProvider.SaveSaveData()
-    SaveManager:Set("DSS", saveData)
-
+    BalanceMod.SaveModData()
 end
 
 function MenuProvider.GetPaletteSetting()
-    return saveData.MenuPalette
+    local dssData = BalanceMod.GetDssSave() or {}
+    return dssData.MenuPalette
 end
 
 function MenuProvider.SavePaletteSetting(var)
-    saveData.MenuPalette = var
+    local dssData = BalanceMod.GetDssSave() or {}
+    dssData.MenuPalette = var
 end
 
 function MenuProvider.GetHudOffsetSetting(var)
+    local dssData = BalanceMod.GetDssSave() or {}
     if not REPENTANCE then
-        return saveData.HudOffset
+        return dssData.HudOffset
     else
         return Options.HUDOffset * 10
     end
 end
 
 function MenuProvider.SaveHudOffsetSetting(var)
+    local dssData = BalanceMod.GetDssSave() or {}
     if not REPENTANCE then
-        saveData.HudOffset = var
+        dssData.HudOffset = var
     end
 end
 
 function MenuProvider.GetGamepadToggleSetting()
-    return saveData.MenuControllerToggle
+    local dssData = BalanceMod.GetDssSave() or {}
+    return dssData.MenuControllerToggle
 end
 
 function MenuProvider.SaveGamepadToggleSetting(var)
-    saveData.MenuControllerToggle = var
+    local dssData = BalanceMod.GetDssSave() or {}
+    dssData.MenuControllerToggle = var
 end
 
 function MenuProvider.GetMenuKeybindSetting()
-    return saveData.MenuKeybind
+    local dssData = BalanceMod.GetDssSave() or {}
+    return dssData.MenuKeybind
 end
 
 function MenuProvider.SaveMenuKeybindSetting(var)
-    saveData.MenuKeybind = var
+    local dssData = BalanceMod.GetDssSave() or {}
+    dssData.MenuKeybind = var
 end
 
 function MenuProvider.GetMenuHintSetting()
-    return saveData.MenuHint
+    local dssData = BalanceMod.GetDssSave() or {}
+    return dssData.MenuHint
 end
 
 function MenuProvider.SaveMenuHintSetting(var)
-    saveData.MenuHint = var
+    local dssData = BalanceMod.GetDssSave() or {}
+    dssData.MenuHint = var
 end
 
 function MenuProvider.GetMenuBuzzerSetting()
-    return saveData.MenuBuzzer
+    local dssData = BalanceMod.GetDssSave() or {}
+    return dssData.MenuBuzzer
 end
 
 function MenuProvider.SaveMenuBuzzerSetting(var)
-    saveData.MenuBuzzer = var
+    local dssData = BalanceMod.GetDssSave() or {}
+    dssData.MenuBuzzer = var
 end
 
 function MenuProvider.GetMenusNotified()
-    return saveData.MenusNotified
+    local dssData = BalanceMod.GetDssSave() or {}
+    return dssData.MenusNotified
 end
 
 function MenuProvider.SaveMenusNotified(var)
-    saveData.MenusNotified = var
+    local dssData = BalanceMod.GetDssSave() or {}
+    dssData.MenusNotified = var
 end
 
 function MenuProvider.GetMenusPoppedUp()
-    return saveData.MenusPoppedUp
+    local dssData = BalanceMod.GetDssSave() or {}
+    return dssData.MenusPoppedUp
 end
 
 function MenuProvider.SaveMenusPoppedUp(var)
-    saveData.MenusPoppedUp = var
+    local dssData = BalanceMod.GetDssSave() or {}
+    dssData.MenusPoppedUp = var
 end
 
 local DSSInitializerFunction = include("BalanceMod.API.dssmenucore")
@@ -304,8 +302,7 @@ local dssDirectory = {
     },
     items = {
         title = "item changes",
-        buttons = {
-        },
+        buttons = {},
         generate = function (master)
             master.buttons = {}
             for _, item in ipairs(ITEM_CHANGES) do
@@ -313,11 +310,11 @@ local dssDirectory = {
                     str = item.Name,
                     tooltip = GenerateTooltip(item.Tooltip),
                     choices = {"enabled", "disabled"},
-                    setting = saveData[tostring(item.Id)] == true and 1 or 2,
                     variable = item.Name .. "-toggle",
 
                     load = function ()
-                        local key = tostring(item.Id)
+                        local saveData = BalanceMod.GetSettingsSave() or {}
+                        local key = tostring(item.Index)
                         if saveData[key] == nil then
                             saveData[key] = true
                         end
@@ -326,19 +323,20 @@ local dssDirectory = {
                     end,
 
                     store = function (var)
-                        local key = tostring(item.Id)
+                        local saveData = BalanceMod.GetSettingsSave() or {}
+                        local key = tostring(item.Index)
                         saveData[key] = var == 1
                     end
                 }
 
+                button.setting = button.load()
                 table.insert(master.buttons, button)
             end
         end
     },
     trinkets = {
         title = "trinket changes",
-        buttons = {
-        },
+        buttons = {},
         generate = function (master)
             master.buttons = {}
             for _, item in ipairs(TRINKET_CHANGES) do
@@ -346,11 +344,11 @@ local dssDirectory = {
                     str = item.Name,
                     tooltip = GenerateTooltip(item.Tooltip),
                     choices = {"enabled", "disabled"},
-                    setting = saveData["trinket-" .. tostring(item.Id)] == true and 1 or 2,
                     variable = item.Name .. "-toggle",
 
                     load = function ()
-                        local key = "trinket-" .. tostring(item.Id)
+                        local saveData = BalanceMod.GetSettingsSave() or {}
+                        local key = tostring(item.Index)
                         if saveData[key] == nil then
                             saveData[key] = true
                         end
@@ -359,19 +357,20 @@ local dssDirectory = {
                     end,
 
                     store = function (var)
-                        local key = "trinket-" .. tostring(item.Id)
+                        local saveData = BalanceMod.GetSettingsSave() or {}
+                        local key = tostring(item.Index)
                         saveData[key] = var == 1
                     end
                 }
 
+                button.setting = button.load()
                 table.insert(master.buttons, button)
             end
         end
     },
     enemies = {
         title = "enemy changes",
-        buttons = {
-        },
+        buttons = {},
         generate = function (master)
             master.buttons = {}
             for _, item in ipairs(ENEMY_CHANGES) do
@@ -379,10 +378,10 @@ local dssDirectory = {
                     str = item.Name,
                     tooltip = GenerateTooltip(item.Tooltip),
                     choices = {"enabled", "disabled"},
-                    setting = saveData[item.Change] == true and 1 or 2,
                     variable = item.Name .. "-toggle",
 
                     load = function ()
+                        local saveData = BalanceMod.GetSettingsSave() or {}
                         if saveData[item.Change] == nil then
                             saveData[item.Change] = true
                         end
@@ -391,10 +390,12 @@ local dssDirectory = {
                     end,
 
                     store = function (var)
+                        local saveData = BalanceMod.GetSettingsSave() or {}
                         saveData[item.Change] = var == 1
                     end
                 }
 
+                button.setting = button.load()
                 table.insert(master.buttons, button)
             end
         end
@@ -410,10 +411,10 @@ local dssDirectory = {
                     str = item.Name,
                     tooltip = GenerateTooltip(item.Tooltip),
                     choices = {"enabled", "disabled"},
-                    setting = saveData[tostring(item.Change)] == true and 1 or 2,
                     variable = item.Name .. "-toggle",
 
                     load = function ()
+                        local saveData = BalanceMod.GetSettingsSave() or {}
                         local key = tostring(item.Change)
                         if saveData[key] == nil then
                             saveData[key] = true
@@ -427,10 +428,12 @@ local dssDirectory = {
                     end,
 
                     store = function (var)
+                        local saveData = BalanceMod.GetSettingsSave() or {}
                         saveData[item.Change] = var == 1
                     end
                 }
 
+                button.setting = button.load()
                 table.insert(master.buttons, button)
             end
         end
@@ -481,16 +484,18 @@ local dirKey = {
     Path = {},
 }
 
+DeadSeaScrollsMenu.AddMenu("BalanceMod", {
+    Run = dssmod.runMenu,
+    Open = dssmod.openMenu,
+    Close = dssmod.closeMenu,
+    UseSubMenu = false,
+    Directory = dssDirectory,
+    DirectoryKey = dirKey
+})
 
-return function (cb)
-    MenuProvider.LoadSaveData()
-
-    DeadSeaScrollsMenu.AddMenu("BalanceMod", {
-        Run = dssmod.runMenu, 
-        Open = dssmod.openMenu, 
-        Close = dssmod.closeMenu, 
-        UseSubMenu = false,
-        Directory = dssDirectory, 
-        DirectoryKey = dirKey
-    })
-end
+BalanceMod.SETTING_INFO = {
+    ITEM_CHANGES = ITEM_CHANGES,
+    TRINKET_CHANGES = TRINKET_CHANGES,
+    ENEMY_CHANGES = ENEMY_CHANGES,
+    TWEAKS = TWEAKS,
+}

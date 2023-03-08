@@ -160,18 +160,16 @@ function BreathOfLife:PostRender(shaderName)
 end
 -- /////////////////// --
 
-return function (BalanceMod)
-    BalanceMod:AddCallback(ModCallbacks.MC_PRE_PLAYER_COLLISION, BreathOfLife.PlayerContact)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, BreathOfLife.OnUpdate)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_RENDER, BreathOfLife.PostRender)
-    BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, BreathOfLife.Activate, BreathOfLife.Item)
-    BalanceMod:AddCallback(ModCallbacks.MC_GET_SHADER_PARAMS, BreathOfLife.PostRender)
-    if EID then
-        EID:addCollectible(BreathOfLife.Item, "Isaac becomes invincible while charge is completely depleted#Deplete charge by holding use#{{Warning}} Holding for too long after becoming invincible will deal damage to Isaac#Charge regenerates when not held#{{Collectible160}} Touching enemies while invincible summons a beam of light") 
-    end
-
-    return {
-        OldItemId = CollectibleType.COLLECTIBLE_BREATH_OF_LIFE,
-        NewItemId = BreathOfLife.Item,
-    }
+BalanceMod:AddCallback(ModCallbacks.MC_PRE_PLAYER_COLLISION, BreathOfLife.PlayerContact)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, BreathOfLife.OnUpdate)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_RENDER, BreathOfLife.PostRender)
+BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, BreathOfLife.Activate, BreathOfLife.Item)
+BalanceMod:AddCallback(ModCallbacks.MC_GET_SHADER_PARAMS, BreathOfLife.PostRender)
+if EID then
+    EID:addCollectible(BreathOfLife.Item, "Isaac becomes invincible while charge is completely depleted#Deplete charge by holding use#{{Warning}} Holding for too long after becoming invincible will deal damage to Isaac#Charge regenerates when not held#{{Collectible160}} Touching enemies while invincible summons a beam of light")
 end
+
+return {
+    OldItemId = CollectibleType.COLLECTIBLE_BREATH_OF_LIFE,
+    NewItemId = BreathOfLife.Item,
+}

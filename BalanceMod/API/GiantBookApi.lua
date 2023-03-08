@@ -187,12 +187,9 @@ function Api:CustomRender()
 	end
 end
 
-
-function Api:Init(mod)
-    mod:AddCallback(ModCallbacks.MC_POST_RENDER, Api.CustomRender)
-    mod:AddCallback(ModCallbacks.MC_POST_RENDER, Api.PaperRender)
-    mod:AddCallback(ModCallbacks.MC_POST_RENDER, Api.BookRender)
-    mod:AddCallback(ModCallbacks.MC_USE_CARD, Api.UseBerkano, Card.RUNE_BERKANO)
-end
+BalanceMod:AddCallback(ModCallbacks.MC_POST_RENDER, Api.CustomRender)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_RENDER, Api.PaperRender)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_RENDER, Api.BookRender)
+BalanceMod:AddCallback(ModCallbacks.MC_USE_CARD, Api.UseBerkano, Card.RUNE_BERKANO)
 
 return Api

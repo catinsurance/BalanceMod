@@ -74,19 +74,17 @@ function TheJar:GameStart()
     end
 end
 
-return function (BalanceMod)
-    BalanceMod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, TheJar.OnHit)
-    BalanceMod:AddCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, TheJar.OnCollision, PickupVariant.PICKUP_HEART)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, TheJar.GameStart)
-    
-    if EID then
-        EID:addCollectible(TheJar.Item, "Absorbs damage if full#Can be filled with only a full or double red heart#Emptied when damage is absorbed")
-        EID:addCollectible(TheJar.ItemFull, "Absorbs damage if full#Can only be filled with a full red heart or a double red heart#Emptied when damage is absorbed", "The Jar")
-    end
-    
+BalanceMod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, TheJar.OnHit)
+BalanceMod:AddCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, TheJar.OnCollision, PickupVariant.PICKUP_HEART)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, TheJar.GameStart)
 
-    return {
-        OldItemId = CollectibleType.COLLECTIBLE_THE_JAR,
-        NewItemId = TheJar.Item
-    }
+if EID then
+    EID:addCollectible(TheJar.Item, "Absorbs damage if full#Can be filled with only a full or double red heart#Emptied when damage is absorbed")
+    EID:addCollectible(TheJar.ItemFull, "Absorbs damage if full#Can only be filled with a full red heart or a double red heart#Emptied when damage is absorbed", "The Jar")
 end
+
+
+return {
+    OldItemId = CollectibleType.COLLECTIBLE_THE_JAR,
+    NewItemId = TheJar.Item
+}

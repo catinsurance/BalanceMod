@@ -1,85 +1,271 @@
-local json = require("BalanceMod.API.json")
+local json = require("json")
 
-local SaveManager = {
-    ModReference = nil,
-    Loaded = {}
-}
+local dataCache = {}
+local dataCacheBackup = {}
+local shouldRestoreOnUse = false
+local loadedData = false
+local inRunButNotLoaded = true
 
-local function IsInitComplete()
-    return SaveManager.ModReference ~= nil
+---@class SaveData
+---@field run RunSave @Data that is reset when the run ends. Using glowing hourglass restores data to the last backup.
+---@field hourglassBackup table @The data that is restored when using glowing hourglass. Don't touch this.
+---@field file FileSave @Data that is persistent between runs.
+
+---@class RunSave
+---@field persistent table @Things in this table will not be reset until the run ends.
+---@field level table @Things in this table will not be reset until the level is changed.
+---@field room table @Things in this table will not be reset until the room is changed.
+
+---@class FileSave
+---@field achievements table @Achievement related data.
+---@field dss table @Dead Sea Scrolls related data.
+---@field settings table @Setting related data.
+---@field misc table @Use the other categories if you can.
+
+-- If you want to store default data, you must put it in this table.
+---@return SaveData
+function BalanceMod.DefaultSave()
+    return {
+        ---@type RunSave
+        run = {
+            persistent = {},
+            level = {},
+            room = {},
+        },
+        ---@type RunSave
+        hourglassBackup = {
+            persistent = {},
+            level = {},
+            room = {},
+        },
+        ---@type FileSave
+        file = {
+            dss = {},
+            settings = {},
+        },
+    }
 end
 
-local function print(...)
-    _G.print("[BalanceMod] " .. ...)
+function BalanceMod.ShallowCopy(tab)
+    return {table.unpack(tab)}
 end
 
-local function Length(t)
-    local count = 0
-    for _ in pairs(t) do
-        count = count + 1
+function BalanceMod.DeepCopy(tab)
+    local copy = {}
+    for k, v in pairs(tab) do
+        if type(v) == 'table' then
+            copy[k] = BalanceMod.DeepCopy(v)
+        else
+            copy[k] = v
+        end
     end
-    return count
+    return copy
 end
 
-function SaveManager:Flush() -- save from cache
-    if not IsInitComplete() then
-        --print("SaveManager:Save() called before initialization was complete, no save was made.")
+---@return RunSave
+function BalanceMod.DefaultRunSave()
+    return {
+        persistent = {},
+        level = {},
+        room = {},
+    }
+end
+
+---@return boolean
+function BalanceMod.IsDataLoaded()
+    return loadedData
+end
+
+function BalanceMod.PatchSaveTable(deposit, source)
+    source = source or BalanceMod.DefaultSave()
+
+    for i, v in pairs(source) do
+        if deposit[i] ~= nil then
+            if type(v) == "table" then
+                if type(deposit[i]) ~= "table" then
+                    deposit[i] = {}
+                end
+
+                deposit[i] = BalanceMod.PatchSaveTable(deposit[i], v)
+            else
+                deposit[i] = v
+            end
+        else
+            if type(v) == "table" then
+                if type(deposit[i]) ~= "table" then
+                    deposit[i] = {}
+                end
+
+                deposit[i] = BalanceMod.PatchSaveTable({}, v)
+            else
+                deposit[i] = v
+            end
+        end
+    end
+
+    return deposit
+end
+
+function BalanceMod.SaveModData()
+    if not loadedData then
         return
     end
 
-    local toJson = json.encode(SaveManager.Loaded)
-    SaveManager.ModReference:SaveData(toJson)
+    -- Save backup
+    local backupData = BalanceMod.DeepCopy(dataCacheBackup)
+    dataCache.hourglassBackup = BalanceMod.PatchSaveTable(backupData, BalanceMod.DefaultRunSave())
+
+    local finalData = BalanceMod.DeepCopy(dataCache)
+    finalData = BalanceMod.PatchSaveTable(finalData, BalanceMod.DefaultSave())
+
+    BalanceMod:SaveData(json.encode(finalData))
 end
 
-function SaveManager:Get(key)
-    if not IsInitComplete() then
-        --print("SaveManager:Get() called before initialization was complete, no data was returned.")
-        return
-    end
-
-    return SaveManager.Loaded[key]
+-- For glowing hourglass
+function BalanceMod.BackupModData()
+    local copy = BalanceMod.DeepCopy(dataCache)
+    dataCacheBackup = copy.run
 end
 
-function SaveManager:Set(key, value)
-    if not IsInitComplete() then
-        --print("SaveManager:Set() called before initialization was complete, no data was set.")
-        return
+function BalanceMod.RestoreModData()
+    if shouldRestoreOnUse then
+        dataCache.run = BalanceMod.DeepCopy(dataCacheBackup)
+        dataCache.run = BalanceMod.PatchSaveTable(dataCache.run, BalanceMod.DefaultRunSave())
     end
-
-    SaveManager.Loaded[key] = value
 end
 
-function SaveManager:Load()
-    if not IsInitComplete() then
-        --print("SaveManager:GetData() called before initialization was complete, no data was returned.")
+function BalanceMod.LoadModData()
+    if loadedData then
         return
     end
 
-    if Length(SaveManager.Loaded) > 0 then
-        --print("SaveManager:GetData() called when data was already loaded, no data was returned.")
+    local saveData = BalanceMod.DefaultSave()
+
+    if BalanceMod:HasData() then
+        local data = json.decode(BalanceMod:LoadData())
+        saveData = BalanceMod.PatchSaveTable(data, BalanceMod.DefaultSave())
+    end
+
+    dataCache = saveData
+    dataCacheBackup = dataCache.hourglassBackup
+    loadedData = true
+    inRunButNotLoaded = false
+end
+
+---@return table?
+function BalanceMod.GetRunPersistentSave()
+    if not loadedData then
         return
     end
 
-    if SaveManager.ModReference:HasData() then
-        local data = SaveManager.ModReference:LoadData()
-        local fromJson = data ~= "" and json.decode(data) or {}
-        SaveManager.Loaded = fromJson
+    return dataCache.run.persistent
+end
+
+---@return table?
+function BalanceMod.GetLevelSave()
+    if not loadedData then
+        return
+    end
+
+    return dataCache.run.level
+end
+
+---@return table?
+function BalanceMod.GetRoomSave()
+    if not loadedData then
+        return
+    end
+
+    return dataCache.run.room
+end
+
+---@return table?
+function BalanceMod.GetSettingsSave()
+    if not loadedData then
+        return
+    end
+
+    return dataCache.file.settings
+end
+
+---@return table?
+function BalanceMod.GetDssSave()
+    if not loadedData then
+        return
+    end
+
+    return dataCache.file.dss
+end
+
+---@param settingName string
+function BalanceMod.IsSettingEnabled(settingName)
+    local data = BalanceMod.GetSettingsSave()
+    if data then
+        return data[settingName] == true
     else
-        SaveManager.Loaded = {}
+        -- Default
+        return true
     end
 end
 
-function SaveManager:Init(ModReference)
-    if IsInitComplete() then
-        --print("SaveManager:Init() called after initialization was complete, aborting initialization.")
-        return
+local function ResetRunSave()
+    dataCache.run.level = {}
+    dataCache.run.room = {}
+    dataCache.run.persistent = {}
+
+    dataCache.hourglassBackup.level = {}
+    dataCache.hourglassBackup.room = {}
+    dataCache.hourglassBackup.persistent = {}
+
+    BalanceMod.SaveModData()
+end
+
+BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, BalanceMod.RestoreModData, CollectibleType.COLLECTIBLE_GLOWING_HOUR_GLASS)
+
+BalanceMod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, function()
+    local newGame = Game():GetFrameCount() == 0
+
+    BalanceMod.LoadModData()
+
+    if newGame then
+        ResetRunSave()
+        shouldRestoreOnUse = false
     end
+end)
 
-    SaveManager.ModReference = ModReference
-end
+BalanceMod:AddCallback(ModCallbacks.MC_POST_UPDATE, function ()
+    local game = Game()
+    if game:GetFrameCount() > 0 then
+        if not loadedData and inRunButNotLoaded then
+            BalanceMod.LoadModData()
+            inRunButNotLoaded = false
+        end
+    end
+end)
 
-function SaveManager:IsInitialized()
-    return IsInitComplete()
-end
+BalanceMod:AddCallback(ModCallbacks.MC_PRE_MOD_UNLOAD, function(_, mod)
+    if mod.Name == "Balance Mod" then
+        if loadedData then
+            BalanceMod.SaveModData()
+        end
+    end
+end)
 
-return SaveManager
+BalanceMod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, function()
+    dataCache.run.room = {}
+    BalanceMod.SaveModData()
+    shouldRestoreOnUse = true
+end)
+
+BalanceMod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, function()
+    dataCache.run.level = {}
+    BalanceMod.SaveModData()
+    shouldRestoreOnUse = true
+end)
+
+BalanceMod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, function(_, shouldSave)
+    BalanceMod.SaveModData()
+    loadedData = false
+    inRunButNotLoaded = false
+    shouldRestoreOnUse = false
+end)

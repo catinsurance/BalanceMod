@@ -8,7 +8,7 @@
     }
 
 ]]
-local SaveManager = require("BalanceMod.Utility.SaveManager")
+
 local QualityTweaks = {
     Tweaks = {
         [CollectibleType.COLLECTIBLE_MONSTROS_LUNG] = Isaac.GetItemIdByName("Monstro's Lung"),
@@ -36,7 +36,7 @@ function QualityTweaks:PlayerUpdate(player)
 end
 
 function QualityTweaks:GameStart()
-    if SaveManager:Get("DSS") ~= nil and SaveManager:Get("DSS").QualityTweaks then
+    if BalanceMod.IsSettingEnabled("QualityTweaks") then
         local itemPool = Game():GetItemPool()
         for item, data in pairs(QualityTweaks.Tweaks) do
             itemPool:RemoveCollectible(item)
@@ -44,14 +44,12 @@ function QualityTweaks:GameStart()
     end
 end
 
-return function (BalanceMod)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, QualityTweaks.GameStart)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, QualityTweaks.PlayerUpdate)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, QualityTweaks.GameStart)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, QualityTweaks.PlayerUpdate)
 
-    if EID then
-        for oldItem, newItem in pairs(QualityTweaks.Tweaks) do
-            local description = EID:getDescriptionObj(5, 100, oldItem, nil, true)
-            EID:addCollectible(newItem, description.Description, description.Name, EID:getLanguage())
-        end
+if EID then
+    for oldItem, newItem in pairs(QualityTweaks.Tweaks) do
+        local description = EID:getDescriptionObj(5, 100, oldItem, nil, true)
+        EID:addCollectible(newItem, description.Description, description.Name, EID:getLanguage())
     end
 end

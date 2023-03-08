@@ -5,11 +5,9 @@ local CursedEye = {
     KnockbackMultiplier = 0.35,
 }
 
-local SaveManager = require("BalanceMod.Utility.SaveManager")
-
 ---@param tear EntityTear
 function CursedEye:TearInit(tear)
-    if tear.FrameCount == 1 and SaveManager:Get("DSS") and SaveManager:Get("DSS").CursedEyeTweak then
+    if tear.FrameCount == 1 and BalanceMod.IsSettingEnabled("CursedEyeTweak") then
         if tear.Parent ~= nil and tear.Parent.Type == EntityType.ENTITY_PLAYER then
             local player = tear.Parent:ToPlayer()
             if player:HasCollectible(CursedEye.Item) then
@@ -19,6 +17,4 @@ function CursedEye:TearInit(tear)
     end
 end
 
-return function (BalanceMod)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_TEAR_UPDATE, CursedEye.TearInit)
-end
+BalanceMod:AddCallback(ModCallbacks.MC_POST_TEAR_UPDATE, CursedEye.TearInit)

@@ -14,15 +14,13 @@ end
 
 -- /////////////////// --
 
-return function (BalanceMod)
-    BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, BottleOfPills.OnUse, BottleOfPills.Item)
+BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, BottleOfPills.OnUse, BottleOfPills.Item)
 
-    if EID then
-        EID:addCollectible(BottleOfPills.Item, "Gives Isaac one pill on use")
-    end
-
-    return {
-        OldItemId = CollectibleType.COLLECTIBLE_MOMS_BOTTLE_PILLS,
-        NewItemId = BottleOfPills.Item,
-    }
+if EID then
+    EID:addCollectible(BottleOfPills.Item, "Gives Isaac one pill on use")
 end
+
+return {
+    OldItemId = CollectibleType.COLLECTIBLE_MOMS_BOTTLE_PILLS,
+    NewItemId = BottleOfPills.Item,
+}

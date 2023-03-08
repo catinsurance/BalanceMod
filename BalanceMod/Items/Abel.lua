@@ -176,16 +176,14 @@ end
 
 -- /////////////////// --
 
-return function (BalanceMod)
-    BalanceMod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, Abel.OnUpdate, Abel.Familiar)
-    BalanceMod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Abel.OnCacheUpdate)
+BalanceMod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, Abel.OnUpdate, Abel.Familiar)
+BalanceMod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Abel.OnCacheUpdate)
 
-    if EID then
-        EID:addCollectible(Abel.Item, "Isaac gains a familiar that will mirror his movements#Automatically shoots at enemies nearby#Will retrieve pickups and open chests that it touches for the player#Can not open locked chests")
-    end
-
-    return {
-        OldItemId = CollectibleType.COLLECTIBLE_ABEL,
-        NewItemId = Abel.Item,
-    }
+if EID then
+    EID:addCollectible(Abel.Item, "Isaac gains a familiar that will mirror his movements#Automatically shoots at enemies nearby#Will retrieve pickups and open chests that it touches for the player#Can not open locked chests")
 end
+
+return {
+    OldItemId = CollectibleType.COLLECTIBLE_ABEL,
+    NewItemId = Abel.Item,
+}

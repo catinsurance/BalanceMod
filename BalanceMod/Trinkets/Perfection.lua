@@ -12,7 +12,7 @@ local Perfection = {
     },
 }
 
-local TrinketHelper = require("BalanceMod.Utility.TrinketHelper")
+local TrinketHelper = BalanceMod.TrinketHelper
 
 Perfection.Tiers = {
     [5] = Perfection.Trinkets.Perfection,
@@ -128,17 +128,15 @@ TrinketHelper:RemoveOnSpawn(Perfection.Trinkets.Failure)
 
 -- /////////////////// --
 
-return function (BalanceMod)
-    if not EID then return end
+if not EID then return end
 
-    BalanceMod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Perfection.UpdateCache, CacheFlag.CACHE_LUCK)
-    BalanceMod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, Perfection.TakeDamage, EntityType.ENTITY_PLAYER)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_PICKUP_INIT, Perfection.PickupSpawned, PickupVariant.PICKUP_TRINKET)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, Perfection.RunStart)
+BalanceMod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Perfection.UpdateCache, CacheFlag.CACHE_LUCK)
+BalanceMod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, Perfection.TakeDamage, EntityType.ENTITY_PLAYER)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_PICKUP_INIT, Perfection.PickupSpawned, PickupVariant.PICKUP_TRINKET)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, Perfection.RunStart)
 
-    EID:addTrinket(Perfection.Trinkets.Perfection, "{{ArrowUp}} +10 Luck" .. guide)
-    EID:addTrinket(Perfection.Trinkets.Excellence, "{{ArrowUp}} +8 Luck" .. guide)
-    EID:addTrinket(Perfection.Trinkets.Mediocrity, "{{ArrowUp}} +6 Luck" .. guide)
-    EID:addTrinket(Perfection.Trinkets.Incompetence, "{{ArrowUp}} +4 Luck" .. guide)
-    EID:addTrinket(Perfection.Trinkets.Failure, "{{ArrowUp}} +2 Luck" .. guide)
-end
+EID:addTrinket(Perfection.Trinkets.Perfection, "{{ArrowUp}} +10 Luck" .. guide)
+EID:addTrinket(Perfection.Trinkets.Excellence, "{{ArrowUp}} +8 Luck" .. guide)
+EID:addTrinket(Perfection.Trinkets.Mediocrity, "{{ArrowUp}} +6 Luck" .. guide)
+EID:addTrinket(Perfection.Trinkets.Incompetence, "{{ArrowUp}} +4 Luck" .. guide)
+EID:addTrinket(Perfection.Trinkets.Failure, "{{ArrowUp}} +2 Luck" .. guide)

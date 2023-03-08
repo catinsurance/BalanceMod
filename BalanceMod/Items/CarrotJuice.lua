@@ -19,10 +19,11 @@ end
 
 -- /////////////////// --
 
-return function (BalanceMod)
-    BalanceMod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, CarrotJuice.AddShotSpeed, CacheFlag.CACHE_SHOTSPEED)
-    BalanceMod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, CarrotJuice.AddKnockback, CacheFlag.CACHE_TEARFLAG)
-    if not EID then return false end
+BalanceMod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, CarrotJuice.AddShotSpeed, CacheFlag.CACHE_SHOTSPEED)
+BalanceMod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, CarrotJuice.AddKnockback, CacheFlag.CACHE_TEARFLAG)
+
+if EID then
     EID:addCollectible(CarrotJuice.Item, "{{ArrowUp}}+0.4 Shot speed#{{ArrowUp}} Increased knockback on tears")
-    return false
 end
+
+return false

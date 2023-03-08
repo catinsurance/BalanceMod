@@ -1,5 +1,3 @@
-local SaveManager = require("BalanceMod.Utility.SaveManager")
-
 -- // R Key's damage // --
 
 local RKey = {
@@ -23,13 +21,13 @@ local function WasSelfDamage(flags)
 end
 
 function RKey:OnUse()
-    SaveManager:Set("RKeyUsed", true)
+    BalanceMod.GetRunPersistentSave().RKeyUsed = true
 end
 
 ---@param entity Entity
 function RKey:OnDamage(entity, amount, flags, _, countdown)
     local player = entity:ToPlayer()
-    if SaveManager:Get("RKeyUsed") == true and SaveManager:Get("DSS") and SaveManager:Get("DSS").RKeyTweak then
+    if BalanceMod.IsSettingEnabled("RKeyTweak") and BalanceMod.GetRunPersistentSave() and BalanceMod.GetRunPersistentSave().RKeyUsed then
         if not WasSelfDamage(flags) and amount == 1 then
             if not player:HasCollectible(CollectibleType.COLLECTIBLE_WAFER) then
                 player:TakeDamage(1, DamageFlag.DAMAGE_NO_MODIFIERS, EntityRef(player), countdown) -- make them take an extra damage
@@ -38,14 +36,5 @@ function RKey:OnDamage(entity, amount, flags, _, countdown)
     end
 end
 
-function RKey:GameStart(newGame)
-    if not newGame then
-        SaveManager:Set("RKeyUsed", false)
-    end
-end
-
-return function (BalanceMod)
-    BalanceMod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, RKey.OnDamage)
-    BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, RKey.OnUse, RKey.Item)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, RKey.GameStart)
-end
+BalanceMod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, RKey.OnDamage)
+BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, RKey.OnUse, RKey.Item)

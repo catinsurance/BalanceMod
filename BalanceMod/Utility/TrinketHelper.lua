@@ -57,10 +57,8 @@ function Exhaustion:OnGameStart()
     end
 end
 
-function Exhaustion:Init(mod)
-    mod:AddCallback(ModCallbacks.MC_POST_PICKUP_INIT, Exhaustion.OnTrinketInit, PickupVariant.PICKUP_TRINKET)
-    mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, Exhaustion.OnGameStart)
-    mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, Exhaustion.OnGameStart)
-end
+BalanceMod:AddCallback(ModCallbacks.MC_POST_PICKUP_INIT, Exhaustion.OnTrinketInit, PickupVariant.PICKUP_TRINKET)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, Exhaustion.OnGameStart)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, Exhaustion.OnGameStart)
 
 return Exhaustion

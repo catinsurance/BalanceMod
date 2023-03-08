@@ -184,18 +184,17 @@ end
 
 -- /////////////////// --
 
-return function (BalanceMod)
-    BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, D10.OnUse, D10.Item)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, D10.OnRoomLeft)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, D10.OnRoomLeft)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_UPDATE, D10.GameUpdate)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_END, D10.OnRoomLeft)
-    if EID then
-        EID:addCollectible(D10.Item, "Rerolls champions on use#Rerolled champions will become non-champions#Rerolled champions will drop special loot based on their color")
-    end
+BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, D10.OnUse, D10.Item)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, D10.OnRoomLeft)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, D10.OnRoomLeft)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_UPDATE, D10.GameUpdate)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_END, D10.OnRoomLeft)
 
-    return {
-        OldItemId = CollectibleType.COLLECTIBLE_D10,
-        NewItemId = D10.Item,
-    }
+if EID then
+    EID:addCollectible(D10.Item, "Rerolls champions on use#Rerolled champions will become non-champions#Rerolled champions will drop special loot based on their color")
 end
+
+return {
+    OldItemId = CollectibleType.COLLECTIBLE_D10,
+    NewItemId = D10.Item,
+}

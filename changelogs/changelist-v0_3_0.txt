@@ -14,7 +14,7 @@ v0.3.0 //
 - Transforming from Bethany into a character that can have soul hearts with Clicker will convert any soul charge into soul hearts. Black hearts will be restored from the last time you had them.
 - Clicker can no longer be used to transform in Tarnished Isaac.
 
-- If the player has only Rotten Hearts or not red heart containers at all, Yuck Heart will give 7 Blue Flies on use.
+- When using Yuck Heart while the player has only Rotten Hearts, or while the player has no red heart containers at all, the player will obtain 7 Blue Flies on use.
 
 - Obsessed fan now blocks projectiles, as long as it is not standing directly inside of Isaac.
 
@@ -31,3 +31,5 @@ v0.3.0 //
 - Fixed an issue where there'd be an incorrect amount of charges on an active item affected by the mod when the item is enabled/disabled.  
 
 - Fixed Abel being able to interact with priced pickups.
+
+- How to Jump has had its invincibility frames increased from 10 -> 15.

@@ -41,18 +41,16 @@ end
 
 -- /////////////////// --
 
-return function (BalanceMod)
-    BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, RazorBlade.OnUse, RazorBlade.Item)
-    BalanceMod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, RazorBlade.OnCacheEvaluate)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, RazorBlade.ResetCounter)
-    BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_END, RazorBlade.ResetCounter)
-    if EID then 
-        EID:addCollectible(RazorBlade.Item, "On use:#{{ArrowUp}} +1.8 Damage for the room#{{Heart}} Deals a full heart of damage#Prioritizes red hearts")
-    
-    end
+BalanceMod:AddCallback(ModCallbacks.MC_USE_ITEM, RazorBlade.OnUse, RazorBlade.Item)
+BalanceMod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, RazorBlade.OnCacheEvaluate)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, RazorBlade.ResetCounter)
+BalanceMod:AddCallback(ModCallbacks.MC_POST_GAME_END, RazorBlade.ResetCounter)
+if EID then
+    EID:addCollectible(RazorBlade.Item, "On use:#{{ArrowUp}} +1.8 Damage for the room#{{Heart}} Deals a full heart of damage#Prioritizes red hearts")
 
-    return {
-        OldItemId = CollectibleType.COLLECTIBLE_RAZOR_BLADE,
-        NewItemId = RazorBlade.Item,
-    }
 end
+
+return {
+    OldItemId = CollectibleType.COLLECTIBLE_RAZOR_BLADE,
+    NewItemId = RazorBlade.Item,
+}
