@@ -78,7 +78,6 @@ trinkets[#trinkets + 1] = include("BalanceMod.Trinkets.Perfection")
 
 -- Load every enemy change
 
-include("BalanceMod.NPCs.MomsHand")
 include("BalanceMod.NPCs.HealthChanges")
 
 -- Load every misc change

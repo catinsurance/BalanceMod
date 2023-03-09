@@ -201,6 +201,10 @@ end
 function BalanceMod.IsSettingEnabled(settingName)
     local data = BalanceMod.GetSettingsSave()
     if data then
+        if data[settingName] == nil then
+            data[settingName] = true
+        end
+
         return data[settingName] == true
     else
         -- Default

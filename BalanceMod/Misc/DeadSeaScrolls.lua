@@ -78,6 +78,11 @@ local ITEM_CHANGES = {
         Tooltip = "clicker changes your character with a lot of new rules to make it fair"
     },
     {
+        Name = "obsessed fan",
+        Index = "ObsessedFan",
+        Tooltip = "obsessed fan will blocks projectiles, as long as it isn't standing inside the player"
+    },
+    {
         Name = "little baggy",
         Index = "LittleBaggyTweak",
         Tooltip = "little baggy identifies all pills on pickup"
@@ -118,11 +123,6 @@ local TWEAKS = {
 }
 
 local ENEMY_CHANGES = {
-    {
-        Name = "mom's hand",
-        Tooltip = "mom's hand does a special animation when it spawns",
-        Change = "MomHand"
-    },
     {
         Name = "grilled clotty",
         Tooltip = "lowers the max health of the grilled clotty to 16",
