@@ -1,0 +1,39 @@
+Thanks for installing my mod.
+Previous changes can be found here: https://github.com/maya-bee/BalanceMod/tree/main/changelogs
+
+v0.3.0 //
+
+- Clicker no longer removes your most recent passive.
+- Clicker will grant one filled red heart container if the character transformed from did not have any red heart containers and the character transformed into can.
+- Clicker converts red heart containers to soul hearts if the character transformed into cannot have red hearts.
+- All hearts will be converted into a minimum of 2 coin hearts and a maximum of 3 coin hearts when transformed into the Keeper or Tainted Keeper with Clicker.
+- Car battery no longer has any interaction with Clicker.
+- Clicker will convert soul hearts into red hearts for red heart characters if you previously used Clicker to transform from a red heart character into a soul heart character.
+- Transforming into Tainted Lost with Clicker grants a one-time Holy Mantle effect.
+- Transforming from Tainted Bethany into a red heart character with Clicker will convert any blood charge into red hearts.
+- Transforming from Bethany into a character that can have soul hearts with Clicker will convert any soul charge into soul hearts. Black hearts will be restored from the last time you had them.
+- Clicker can no longer be used to transform in Tarnished Isaac.
+
+- When using Yuck Heart while the player has only Rotten Hearts, or while the player has no red heart containers at all, the player will obtain 7 Blue Flies on use.
+
+- Obsessed fan now blocks projectiles, as long as it is not standing directly inside of Isaac.
+
+- Milk! has had its fire rate increase capped to +10.
+
+- Fixed an issue where gulped tiers of Perfection would not be removed when the player is hit.
+
+- Fixed R Key's damage effect not being removed on a new run.
+
+- Fixed perfection's lower tiers appearing in runs naturally.
+
+- Fish Head now has a 75% chance to spawn a normal blue fly on hit and a 25% chance to spawn a Locust of Pestilence.
+
+- Fixed an issue where there'd be an incorrect amount of charges on an active item affected by the mod when the item is enabled/disabled.  
+
+- Fixed Abel being able to interact with priced pickups.
+
+- How to Jump has had its invincibility frames increased from 10 -> 15.
+
+- Removed the change to Mom's Hand that made her play an animation when the room starts.
+
+- Added death item portraits.

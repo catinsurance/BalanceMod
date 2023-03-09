@@ -1,0 +1,61 @@
+<items gfxroot="gfx/items/" version="1" deathanm2="gfx/death_items.anm2">
+    <passive id="0" cache="shotspeed tearflag" description="Shotspeed + knockback up" gfx="item_c01_carrotjuice.png" name="Carrot Juice" quality="1" tags="offensive"/>
+
+	<passive id="1" cache="all" description="#MONSTROS_LUNG_DESCRIPTION" gfx="collectibles_229_monstroslung.png" id="229" name="#MONSTROS_LUNG_NAME" quality="3"/>
+    
+    <active id="2" cooldown="31" description="Breath of Life" gfx="collectibles_326_breathoflife.png" maxcharges="4" name="Breath of Life" chargetype="special" />
+    <active id="3" description="Glitch power" gfx="Collectibles_481_Dataminer.png" name="Dataminer" maxcharges="3" tags="offensive"/>
+    <active id="4" achievement="305" description="My only option" gfx="Collectibles_475_PlanC.png" name="Plan C" maxcharges="0" tags="offensive"/>
+    <active id="5" quality="0" cooldown="450" description="That's not sanitary" gfx="Collectibles_041_MomsPad.png" maxcharges="3" name="Mom's Pad" tags="offensive"/>
+    <familiar id="6" quality="1" achievement="51" description="Mirrored buddy" gfx="Collectibles_188_Abel.png" name="Abel" cache="familiars" tags="offensive baby"/>
+	<active id="7" description="Reroll champions" gfx="collectibles_285_d10.png" maxcharges="3" quality="1" name="D10" />
+	<active id="8" achievement="44" cache="damage" description="No pain no gain" gfx="Collectibles_126_RazorBlade.png" maxcharges="0" name="Razor Blade" tags="nolostbr nochallenge"/>
+    <active id="9" description="Save your life" gfx="item_c03_thejar.png" maxcharges="0" name="The Jar" tags="nolostbr"/>
+    <active id="10" description="Save your life" gfx="item_c02_thejarfull.png" maxcharges="0" name="The Jar (Full)" tags="nolostbr"/>
+    <familiar id="11" quality="1" description="Don't cry over it..." gfx="collectibles_436_milk.png" name="Milk!" cache="familiars" tags="nolostbr uniquefamiliar"/>
+    <active id="12" description="Reusable pill generator" gfx="collectibles_102_momsbottleofpills.png" quality="1" name="Mom's Bottle of Pills" maxcharges="5" tags="offensive mom nocantrip"/>
+    <active id="13" description="Change" gfx="collectibles_482_clicker.png" quality="0" name="Clicker" maxcharges="6" tags="offensive nochallenge"/>
+
+    <trinket description="Evil begone" gfx="trinket_c01_nazar.png" name="Nazar" tags="nochallenge offensive"/>
+    <trinket description="It's rotten" gfx="trinket_029_fishhead.png" name="Fish Head" />
+    
+    <trinket description="Luck way up. Don't lose it!" gfx="trinket_145_perfection.png" name="Perfection" tags="quest" cache="luck"/>
+    <trinket description="Luck way up. Don't mess up again!" gfx="trinket_c03_bperfection.png" name="Excellence" tags="quest" cache="luck"/>
+    <trinket description="Luck up. Last chance!" gfx="trinket_c04_cperfection.png" name="Mediocrity" tags="quest" cache="luck"/>
+    <trinket description="Luck up. How disappointing!" gfx="trinket_c05_dperfection.png" name="Incompetence" tags="quest" cache="luck"/>
+    <trinket description="Luck up. How embarrassing!" gfx="trinket_c06_fperfection.png" name="Failure" tags="quest" cache="luck"/>
+
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Magdalene" achievement="1"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Cain" achievement="2"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Judas" achievement="3"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Blue Baby" achievement="32"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Eve" achievement="42"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Samson" achievement="67"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Azazel" achievement="79"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Lazarus" achievement="80"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Eden" achievement="81"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Lost" achievement="82"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Lilith" achievement="199"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Keeper" achievement="251"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Apollyon" achievement="340"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Forgotten" achievement="390"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Bethany" achievement="404"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Jacob and Esau" achievement="405"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Isaac" achievement="474"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Magdalene" achievement="475"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Cain" achievement="476"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Judas" achievement="477"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Blue Baby" achievement="478"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Eve" achievement="479"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Samson" achievement="480"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Azazel" achievement="481"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Lazarus" achievement="482"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Eden" achievement="483"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Lost" achievement="484"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Lilith" achievement="485"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Keeper" achievement="486"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Apollyon" achievement="487"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Forgotten" achievement="488"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Bethany" achievement="489"/>
+    <trinket description="You shouldn't be able to see this!!" gfx="trinket_c05_dperfection.png" name="Dummy Tainted Jacob" achievement="490"/>
+</items>

@@ -1,0 +1,86 @@
+<shaders>
+    <shader name="Vignette">
+        <parameters>
+            <param name="Enabled" type="float"/>
+            <param name="Strength" type="float"/>
+            <param name="VignetteColor" type="vec3"/>
+        </parameters>
+        <vertex><![CDATA[
+            attribute vec3 Position;
+            attribute vec4 Color;
+            attribute vec2 TexCoord;
+            attribute vec4 RenderData;
+            attribute float Scale;
+            
+            attribute float Strength;
+            attribute float Enabled;
+            attribute vec3 VignetteColor;
+            
+            varying lowp vec4 Color0;
+            varying mediump vec2 TexCoord0;
+            varying lowp vec4 RenderDataOut;
+            varying lowp float ScaleOut;
+            uniform sampler2D Texture0;
+            uniform mat4 Transform;
+
+            varying lowp float StrengthOut;
+            varying lowp float EnabledOut;
+            varying lowp vec3 ColorOut;
+
+            void main(void) 
+            {
+                RenderDataOut = RenderData;
+                TexCoord0 = TexCoord;
+                Color0 = Color;
+                ScaleOut = Scale;
+
+                EnabledOut = Enabled;
+                StrengthOut = Strength;
+                ColorOut = VignetteColor;
+
+                gl_Position = Transform * vec4(Position.xyz, 1.0);
+
+                
+            }
+
+        ]]></vertex>
+        <fragment><![CDATA[
+            varying lowp vec4 Color0;
+            varying mediump vec2 TexCoord0;
+            varying lowp vec4 RenderDataOut;
+            varying lowp float ScaleOut;
+            uniform sampler2D Texture0;
+
+            varying lowp vec3 ColorOut;
+            varying lowp float EnabledOut;
+            varying lowp float StrengthOut;
+
+            void main(void) {
+                if (EnabledOut == 0.0) {
+                    gl_FragColor = texture2D(Texture0, TexCoord0);
+                    return;
+                }
+
+                if (EnabledOut == 1.0) {
+                    vec4 c = texture2D(Texture0, TexCoord0);
+
+                    // get center of screen
+                    vec2 center = vec2(RenderDataOut.x / 2.0, RenderDataOut.y / 2.0);
+                    
+                    float dist = distance(center, gl_FragCoord.xy);
+                    // make it a circle
+                    dist = dist / (RenderDataOut.x / 2.0);
+
+                    float vignette = smoothstep(0.0, 1.0, dist);
+                    
+                    vignette = vignette * StrengthOut;
+
+                    c.rgb = mix(c.rgb, ColorOut.xyz, vignette);
+                    gl_FragColor = c;
+
+                    return;
+                }
+            }
+        ]]></fragment>
+    </shader>
+</shaders>
