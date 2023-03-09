@@ -115,9 +115,9 @@ local RedHeartCharacters = {
 
 local SoulHeartCharacters = {
     PlayerType.PLAYER_BLUEBABY,
+    PlayerType.PLAYER_BLACKJUDAS,
     PlayerType.PLAYER_JUDAS_B,
     PlayerType.PLAYER_BLUEBABY_B,
-    PlayerType.PLAYER_THEFORGOTTEN_B,
     PlayerType.PLAYER_BETHANY_B,
 }
 
@@ -190,7 +190,7 @@ local function removeHp(player)
     player:AddBoneHearts(-player:GetBoneHearts())
 end
 
-local debugNext = {PlayerType.PLAYER_BETHANY_B, PlayerType.PLAYER_BETHANY, PlayerType.PLAYER_ISAAC}
+local debugNext = {PlayerType.PLAYER_BETHANY_B, PlayerType.PLAYER_BLUEBABY, PlayerType.PLAYER_ISAAC}
 local debugWasNext = 1
 ---@param player EntityPlayer
 ---@param rng RNG
@@ -244,7 +244,7 @@ local function RandomCharacter(player, rng)
     local subPlayer = player:GetSubPlayer()
     local subPlayerSoulHearts, subPlayerBlackHearts = 0, 0
     if subPlayer then
-        subPlayerSoulHearts, subPlayerBlackHearts = getSoulAndBlackHearts(subPlayer) 
+        subPlayerSoulHearts, subPlayerBlackHearts = getSoulAndBlackHearts(subPlayer)
     end
 
     local wasRedHeartCharacter = GetIndexFromValue(RedHeartCharacters, oldType) ~= nil
@@ -274,17 +274,10 @@ local function RandomCharacter(player, rng)
     end
 
     if player:GetPlayerType() == PlayerType.PLAYER_BETHANY_B then
-        if soulHearts == 0 then
-            soulHearts = 2
-        end
-
-        print("adding blood charge",redHeartContainers)
         player:AddBloodCharge(redHeartContainers)
     end
 
     if player:GetPlayerType() == PlayerType.PLAYER_BETHANY then
-
-        print("adding soul charge",soulHearts + blackHearts)
         player:AddSoulCharge(soulHearts + blackHearts)
     end
 
@@ -297,7 +290,7 @@ local function RandomCharacter(player, rng)
 
     if isRedHeartCharacter and wasSoulHeartCharacter then
         -- restore red hearts
-        
+
         redHeartContainers = clickerData[playerIndex].LastRedHeartCharacter.RedHeartContainers
         boneHearts = clickerData[playerIndex].LastRedHeartCharacter.BoneHearts
 
@@ -322,12 +315,6 @@ local function RandomCharacter(player, rng)
         blackHearts = clickerData[playerIndex].LastRedHeartCharacter.BlackHearts
     end
 
-    if (isNoHeartCharacter or isCoinHeartCharacter) and not (wasNoHeartCharacter or wasCoinHeartCharacter) then
-
-        clickerData[playerIndex].LastRedHeartCharacter.SoulHearts = soulHearts
-        clickerData[playerIndex].LastRedHeartCharacter.BlackHearts = blackHearts
-    end
-
     if isCoinHeartCharacter then
         -- round redHeartContainer to even 
         redHeartContainers = clamp(redHeartContainers, 4, 6)
@@ -340,24 +327,26 @@ local function RandomCharacter(player, rng)
     end
 
     if player:GetPlayerType() == PlayerType.PLAYER_THELOST or player:GetPlayerType() == PlayerType.PLAYER_THELOST_B then
-        soulHearts = clamp(soulHearts - 1, 0, 99)
+        soulHearts = 0
+        blackHearts = 0
     end
 
     if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then
         local soulAndBlackHearts = soulHearts + blackHearts
-        boneHearts = math.ceil((math.floor(soulAndBlackHearts / 2) + redHeartContainers) / 2)
+        boneHearts = math.floor((math.floor(soulAndBlackHearts / 2) + redHeartContainers) / 2)
         redHeartContainers = 0
-        redHearts = boneHearts * 2
+        redHearts = clickerData[playerIndex].LastRedHeartCharacter.RedHearts
+    end
+
+    if oldType == PlayerType.PLAYER_THELOST or oldType == PlayerType.PLAYER_THELOST_B then
+        soulHearts = math.max(soulHearts - 1, 0)
     end
 
     if oldType == PlayerType.PLAYER_THEFORGOTTEN then
         redHeartContainers = boneHearts * 2
         boneHearts = 0
-        redHearts = redHeartContainers
         soulHearts = subPlayerSoulHearts
         blackHearts = subPlayerBlackHearts
-
-
     end
 
     if oldType == PlayerType.PLAYER_BETHANY_B and (isRedHeartCharacter) then
@@ -367,9 +356,6 @@ local function RandomCharacter(player, rng)
         if total > oldRed then
             redHeartContainers = clickerData[playerIndex].LastRedHeartCharacter.RedHeartContainers + total
             redHearts = clickerData[playerIndex].LastRedHeartCharacter.RedHearts + total
-        elseif total == oldRed then
-            redHeartContainers = clickerData[playerIndex].LastRedHeartCharacter.RedHeartContainers
-            redHearts = clickerData[playerIndex].LastRedHeartCharacter.RedHearts
         else
             redHeartContainers = math.max(clickerData[playerIndex].LastRedHeartCharacter.RedHeartContainers - math.abs(total), 0)
             redHeartContainers = math.ceil(redHeartContainers)
@@ -378,19 +364,17 @@ local function RandomCharacter(player, rng)
     end
 
     if oldType == PlayerType.PLAYER_BETHANY and (isSoulHeartCharacter or isRedHeartCharacter) then
+        -- get the difference between the old soul charge and their red hearts
+        -- only add the soul hearts if the difference is greater than the soul and black hearts
+        local oldRed = clickerData[playerIndex].LastRedHeartCharacter.RedHeartContainers
         local oldSoulAndBlack = clickerData[playerIndex].LastRedHeartCharacter.SoulHearts + clickerData[playerIndex].LastRedHeartCharacter.BlackHearts
-        local total = clamp(math.ceil((oldSoulCharge - oldSoulAndBlack) / 2), 0, 99)
-        print("total", total)
-        print("old soul and black", oldSoulAndBlack)
+        local total = clamp(math.ceil((oldSoulCharge - oldSoulAndBlack) / 2) - oldRed, 0, 99)
 
-        if total > oldSoulAndBlack then
+        if total > 0 then
             soulHearts = soulHearts + total
             blackHearts = clickerData[playerIndex].LastRedHeartCharacter.BlackHearts
-        elseif total == oldSoulAndBlack then 
-            soulHearts = clickerData[playerIndex].LastRedHeartCharacter.SoulHearts
-            blackHearts = clickerData[playerIndex].LastRedHeartCharacter.BlackHearts
         else
-            soulHearts = math.max(clickerData[playerIndex].LastRedHeartCharacter.SoulHearts - math.abs(total), 0)
+            soulHearts = soulHearts + math.max(clickerData[playerIndex].LastRedHeartCharacter.SoulHearts - math.abs(total), 0)
             blackHearts = clickerData[playerIndex].LastRedHeartCharacter.BlackHearts
         end
     end
@@ -431,12 +415,10 @@ local function RandomCharacter(player, rng)
     player:AddEternalHearts(eternalHearts)
     player:AddBrokenHearts(brokenHearts)
 
-    if not isCoinHeartCharacter then
+    if not isCoinHeartCharacter and not isNoHeartCharacter then
         player:AddSoulHearts(soulHearts)
         player:AddBlackHearts(blackHearts)
     end
-
-    print("redHeartContainers", redHeartContainers, "redHearts", redHearts, "boneHearts", boneHearts, "rottenHearts", rottenHearts, "goldenHearts", goldenHearts, "brokenHearts", brokenHearts, "soulHearts", soulHearts, "blackHearts", blackHearts, "eternalHearts", eternalHearts)
 end
 
 for trinketName in pairs(DummyTrinkets) do
