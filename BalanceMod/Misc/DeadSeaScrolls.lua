@@ -167,6 +167,15 @@ local TRINKET_CHANGES = {
 
 -- Helper functions
 
+local function sortChanges(a, b)
+    return a.Name < b.Name
+end
+
+table.sort(TRINKET_CHANGES, sortChanges)
+table.sort(ENEMY_CHANGES, sortChanges)
+table.sort(TWEAKS, sortChanges)
+table.sort(ITEM_CHANGES, sortChanges)
+
 
 -- auto split tooltips into multiple lines optimally
 local function GenerateTooltip(str)

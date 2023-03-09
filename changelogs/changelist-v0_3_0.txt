@@ -35,3 +35,5 @@ v0.3.0 //
 - How to Jump has had its invincibility frames increased from 10 -> 15.
 
 - Removed the change to Mom's Hand that made her play an animation when the room starts.
+
+- Added death item portraits.

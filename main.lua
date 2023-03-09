@@ -52,7 +52,7 @@ local trinkets = {}
 ]]
 
 items[#items + 1] = include("BalanceMod.Items.Dataminer")
-include("BalanceMod.Items.BreathOfLife")
+items[#items + 1] = include("BalanceMod.Items.BreathOfLife")
 items[#items + 1] = include("BalanceMod.Items.PlanC")
 items[#items + 1] = include("BalanceMod.Items.MomsPad")
 include("BalanceMod.Items.LemonMishap")
