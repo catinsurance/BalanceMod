@@ -1,0 +1,10 @@
+Thanks for installing my mod.
+Previous changes can be found here: https://github.com/maya-bee/BalanceMod/tree/main/changelogs
+
+v0.3.1 //
+
+- Added an extra safety check when saving data in response to the mod being reloaded.
+
+- Fixed an issue where Eden could reroll into trinkets that aren't supposed to appear naturally.
+
+- Fixed an issue where certain trinkets that aren't supposed to appear naturally were appearing naturally.
