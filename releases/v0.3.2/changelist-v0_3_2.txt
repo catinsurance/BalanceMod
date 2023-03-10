@@ -1,0 +1,6 @@
+Thanks for installing my mod.
+Previous changes can be found here: https://github.com/maya-bee/BalanceMod/tree/main/changelogs
+
+v0.3.2 //
+
+- Reverted previous change about rerolling into trinkets you're not supposed to and implemented a different approach to fixing the issue.
