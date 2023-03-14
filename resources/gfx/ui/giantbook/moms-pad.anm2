@@ -2,7 +2,7 @@
 	<Info CreatedBy="Unknown" CreatedOn="31.12.2021 14:35:40" Version="1" Fps="30"/>
 	<Content>
 		<Spritesheets>
-			<Spritesheet Path="giantbook_010_bible.png" Id="0"/>
+			<Spritesheet Path="mom_pad.png" Id="0"/>
 			<Spritesheet Path="giantbook_015_white.png" Id="1"/>
 			<Spritesheet Path="../poof_white.png" Id="2"/>
 			<Spritesheet Path="../../effects/effect_010_poof02.png" Id="3"/>

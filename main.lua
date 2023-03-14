@@ -16,6 +16,7 @@ include("BalanceMod.Utility.SaveManager")
 BalanceMod.Chargebars = include("BalanceMod.Utility.ChargeBars")
 BalanceMod.PoolHelper = include("BalanceMod.Utility.PoolHelper")
 BalanceMod.TrinketHelper = include("BalanceMod.Utility.TrinketHelper")
+BalanceMod.GiantBookApi = include("BalanceMod.API.GiantBookApi")
 
 local disabledItems = {}
 local disabledTrinkets = {}

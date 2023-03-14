@@ -1,0 +1,6 @@
+Thanks for installing my mod.
+Previous changes can be found here: https://github.com/maya-bee/BalanceMod/tree/main/changelogs
+
+v0.3.3 //
+
+- Clicker now has the same visual effects as it does in the vanilla game.

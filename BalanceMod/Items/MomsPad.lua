@@ -1,4 +1,4 @@
-local GiantBook = require("BalanceMod.API.GiantBookApi")
+local GiantBook = BalanceMod.GiantBookApi
 
 -- // Mom's Pad // --
 
@@ -17,7 +17,7 @@ function MomsPad:OnUse(_, _, player)
         MomsPad.EntityTracker[GetPtrHash(entity)] = Isaac.GetFrameCount()
     end
 
-    GiantBook:PlayGiantBook("Appear", "giantbook_008_diaper.png", Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.9, 0.9, 0.9, 1), 90, false)
+    GiantBook:PlayGiantBook("Appear", "giantbook_008_diaper.png", Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.9, 0.9, 0.9, 1), SoundEffect.SOUND_MOM_VOX_FILTERED_ISAAC)
     return {
         Discharge = true,
         ShowAnim = true,

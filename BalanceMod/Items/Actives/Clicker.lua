@@ -190,8 +190,6 @@ local function removeHp(player)
     player:AddBoneHearts(-player:GetBoneHearts())
 end
 
-local debugNext = {PlayerType.PLAYER_BETHANY_B, PlayerType.PLAYER_BLUEBABY, PlayerType.PLAYER_ISAAC}
-local debugWasNext = 1
 ---@param player EntityPlayer
 ---@param rng RNG
 local function RandomCharacter(player, rng)
@@ -217,8 +215,7 @@ local function RandomCharacter(player, rng)
     local oldType = player:GetPlayerType()
 
     local num = rng:RandomInt(#CharacterTypes) + 1
-    local choice = debugNext[debugWasNext] or CharacterTypes[num]
-    debugWasNext = debugWasNext + 1
+    local choice = CharacterTypes[num]
 
     if not choice then
         choice = player:GetPlayerType()
@@ -445,6 +442,8 @@ end
 function Clicker:OnUse(collectible, rng, player, useflags)
     if GetIndexFromValue(CharacterTypes, player:GetPlayerType())  then -- if player is a normal character
         RandomCharacter(player, rng)
+
+        BalanceMod.GiantBookApi:PlayClicker()
     end
 
     return true

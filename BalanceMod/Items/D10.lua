@@ -1,4 +1,3 @@
-local GiantBookApi = require("BalanceMod.API.GiantBookApi")
 local PoolHelper = require("BalanceMod.Utility.PoolHelper")
 
 -- // D10 // --

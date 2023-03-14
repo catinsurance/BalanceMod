@@ -1,6 +1,6 @@
 -- Original:
 -- https://steamcommunity.com/sharedfiles/filedetails/?id=2704939039&
--- Adapted to fit the mod by Maya
+-- Adapted to fit the mod by Slugcat
 -- THANK YOU <3
 
 local Api = {}
