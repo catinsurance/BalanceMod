@@ -7,14 +7,14 @@
 
 The answer to all of those questions should be yes. No game is perfect, but with this mod I'm trying to iron out the kinks in Repentance to make the game fun and fair while keeping it difficult.
 
-This mod contains dozens of item and enemy reworks and tweaks. Use the in-game menu to view and toggle different changes made by the mod.
+This mod contains dozens of item and enemy reworks, along with small tweaks. Use the in-game menu to view and toggle different changes made by the mod.
 
 Changelogs:
 https://github.com/maya-bee/BalanceMod/tree/main/changelogs
 
 This mod is actively undergoing development by me (one person!). Join the Discord server below to help contribute ideas!
 
-v0.3.3
+v0.3.4
 
 Discord:
 https://discord.gg/bNhNkGa6QX
@@ -22,7 +22,7 @@ Github:
 https://github.com/maya-bee/BalanceMod
 Youtube:
 https://www.youtube.com/channel/UCG9FvihQ9Ab6YUatmp9yaBw</description>
-    <version>1.16</version>
+    <version>1.17</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
     <tag id="Items"/>
